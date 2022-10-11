@@ -1,9 +1,10 @@
 import Bigdiv from "./Bigdiv";
-
+import Bigmobile from "./Bigmobile";
 const Nav = () => {
   return (
-    <div className="w-screen h-full bg-sky-900  p-40 px-14  ">
-      <div className="bg-white w-max-content h-8/12 px-14 relative py-8 -my-14  text-gray-400 rounded-xl xl:block sm:hidden ">
+    <>
+    <div className="w-screen h-full bg-sky-900  p-40 px-14  xl:block  hidden ">
+      <div className="bg-white w-max-content h-8/12 px-14 relative py-8 -my-14  text-gray-400 rounded-xl xl:block hidden ">
         <div className=" bg-white z-20 shadow-xl w-11/12  my-36  -top-48 h-24 absolute text-gray-400   rounded-xl ">
           <div className="flex flex-row justify-evenly mt-5">
             <div className="flex flex-col">
@@ -50,7 +51,9 @@ const Nav = () => {
               <h5>Activity</h5>
             </div>
           </div>
+
         </div>
+       
         <div className="flex justify-between">
           <div className=" mt-8  flex flex-row px-3 ">
             <div>
@@ -136,7 +139,7 @@ const Nav = () => {
           SEARCH
         </button>
       </div>
-      <div className="flex flex-row  rounded-3xl border border-solid absolute my-32 w-4/6 justify-evenly left-52 text-center text-black bg-white 2xl:left-72">
+      <div className="xl:flex flex-row  rounded-3xl border border-solid absolute my-32 w-4/6 justify-evenly left-52 text-center text-black bg-white 2xl:left-72 hidden">
         <div className="my-3">Where2Go</div>
         <div className="flex flex-col">
           <div className="text-xl">TripMoney</div>
@@ -153,7 +156,10 @@ const Nav = () => {
         <div className="my-3">Nearby Getaways</div>
         <div className="my-3">Gift Cards</div>
       </div>
+      
     </div>
+    <Bigmobile />
+    </>
   );
 };
 export default Nav;

@@ -1,5 +1,5 @@
 import {
-  FaRegUserCircle,
+  FaRegUserCircle,FaUserCircle,
   FaDharmachakra,
   FaAlignJustify,
   FaTimes,
@@ -40,14 +40,17 @@ const Mmtheader = () => {
   };
   return (
     <>
-      <div className="flex flex-row bg-sky-900 justify-evenly py-2 xxs:justify-between">
+      <div className="flex flex-row bg-sky-900 justify-between py-8 xxs:justify-between xl:py-2">
         {/* <div className="xl:flex sm:hidden"></div> */}
-
-        <div className=" text-2xl px-4">
-          make <span className="bg-red-800  text-3xl rounded-xl ">my</span> trip
-        </div>
-        <div className="my-4 icon-3x   xl:hidden" onClick={bar}>
+        <div className="my-4 mx-5 icon-3x text-2xl  xl:hidden" onClick={bar}>
           {tick ? <FaAlignJustify /> : <FaTimes />}{" "}
+        </div>
+        <div className=" text-4xl px-4">
+          make <span className="bg-red-800  text-4xl rounded-xl ">my</span> trip
+        </div>
+        <div className="bg-blue-300 px-3 py-3 justify-evenly mx-5 flex rounded-full">
+          <div><FaUserCircle className="text-2xl"/></div>
+          <div className="px-1">Login Now</div>
         </div>
         <div className="hidden flex-row  xl:flex  ">
           <div className=" border-light outline-none flex w-56 justify-evenly">
