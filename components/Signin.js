@@ -1,24 +1,96 @@
 import { supabase } from "../utils/supabase";
-import { useReducer, useState } from "react";
-import Header from "../components/Header";
+import { useReducer, useState, useEffect } from "react";
+import Header from "./Header";
 import { useRouter } from "next/router";
-const Signin = () => {
+const Signin = ({ isvisible, onClose }) => {
   const router = useRouter();
   const [mail, setmail] = useState("");
   const [pass, setpass] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [username, setUsername] = useState(null);
+  const [website, setWebsite] = useState(null);
+
+  const [avatar_url, setAvatarUrl] = useState(null);
+
+  useEffect(() => {
+    getProfile();
+  }, []);
+
+  async function getCurrentUser() {
+    console.log("hello");
+    const {
+      data,
+      error,
+    } = await supabase.auth.getUser();
+    console.log(JSON.stringify(data) + " session");
+    if (error) {
+      throw error;
+    }
+
+    // if (!session?.user) {
+    //   throw new Error("User not logged in");
+    // }
+
+    return data;
+  }
+   function getProfile() {
+    //try {
+      setLoading(true);
+      const user = getCurrentUser();
+      console.log(user + "user");
+      // let { data, error, status } = await supabase
+      //   .from("profiles")
+      //   .select(`username, website, avatar_url, useremail`)
+      //   .eq("id", user.id)
+      //   .single();
+
+    //   if (error && status !== 406) {
+    //     throw error;
+    //   }
+
+    //   if (data) {
+    //     console.log(data + "data");
+    //     setmail(data.useremail);
+    //     setUsername(data.username);
+    //     setWebsite(data.website);
+    //     setAvatarUrl(data.avatar_url);
+    //   }
+    // } catch (error) {
+    //   alert(error.message);
+    // } finally {
+    //   setLoading(false);
+    // }
+  }
+
   function handlemail(e) {
     setmail(e.target.value);
   }
   function handlpass(e) {
     setpass(e.target.value);
   }
+
   const signin = async (e) => {
+
     e.preventDefault();
-    const { data, session, error } = await supabase.auth.signInWithPassword({
-      email: mail,
-      password: pass,
-    });
-    console.log(session + "session");
+
+    // useEffect(() => {
+    //   (async () => {
+    //     const { data: user, email} = await supabase
+    //       .from("User")
+    //       .select("*, profiles:id (name)")
+    //       .order("created_at");
+
+    //   })();
+    // }, []);
+   
+   
+    const { data, profile, session, error } =
+      await supabase.auth.signInWithPassword({
+        email: mail,
+        password: pass,
+      });
+      getProfile();
+    // console.log(session + "session");
     // const { data: { user: newuser } }=await supabase.auth.getUser()
     // console.log(newuser +" hello");
     //
@@ -27,16 +99,20 @@ const Signin = () => {
     if (error) {
       alert(JSON.stringify(error));
     } else {
+      onClose();
       router.push("/");
-      console.log("sahil" + JSON.stringify(data));
+      // console.log("sahil" + JSON.stringify(data));
     }
   };
+  if (!isvisible) return null;
   return (
     <>
-      <Header />
+      {/* <Header /> */}
 
-      <div className="min-h-screen min-w-screen bg-gray-200 flex justify-center items-center">
-        <form className="px-24 py-24  bg-white  flex flex-col gap-4 rounded-xl shadow-6xl">
+      
+
+      <div className="  flex justify-center backdrop-grayscale-0 items-center z-40 absolute inset-0 backdrop-blur-sm ">
+        <form className="px-24 py-24   bg-sky-900  flex flex-col sm:gap-4 rounded-xl shadow-6xl">
           <h1 className="text-blue-400 font-bold my-0 text-2xl">
             Welcome Back
           </h1>
@@ -86,6 +162,12 @@ const Signin = () => {
             onClick={signin}
           >
             Sign In
+          </button>
+          <button
+            className="text-2xl text-gray-700 bg-white px-4 py-3 rounded-xl  "
+            onClick={onClose}
+          >
+            Back
           </button>
         </form>
       </div>

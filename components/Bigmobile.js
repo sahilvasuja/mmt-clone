@@ -1,5 +1,12 @@
 import {
-    FaCar,FaHome,FaBus,FaTaxi,FaHiking,FaMoneyCheck,FaMoneyCheckAlt,FaVenus,
+  FaCar,
+  FaHome,
+  FaBus,
+  FaTaxi,
+  FaHiking,
+  FaMoneyCheck,
+  FaMoneyCheckAlt,
+  FaVenus,
   FaRegUserCircle,
   FaDharmachakra,
   FaAlignJustify,
@@ -12,77 +19,130 @@ import {
   FaWallet,
   FaRegSun,
   FaPlane,
-  FaShuttleVan
+  FaShuttleVan,
 } from "react-icons/fa";
+import Icons from "./Icons";
 const Bigmobile = () => {
+  // console.log(data.name)
+  const data = [
+    {
+      name: "Flights",
+      icon: FaPlane,
+      text: "bg-sky-100  text-blue-400"
+    },
+    {
+      name: "Hotel",
+      icon: FaHotel,
+      text: "  text-pink-700  bg-pink-200"
+    },
+    {
+      name: "Train",
+      icon: FaTrain,
+      text: "text-orange-400  bg-orange-200   "
+
+    },
+    {
+      name: "Holiday Packages",
+      icon: FaUmbrellaBeach,
+      text: "text-green-400  bg-gray-100  "
+    },
+  ];
+
+  const data1=[
+    {
+        name1: "Airport Cabs",
+        font: FaCar
+    },
+    {
+        name1: "Homestays"
+    },
+    {
+        name1: "Bus"
+    },
+    {
+        name1: "Activities & Tours"
+    },
+    {
+        name1: "Gift Cards"
+    },
+    {
+        name1: "Nearby Getaways"
+    },
+    {
+        name1: "Outstation Cabs"
+    }
+  ]
+
   return (
     <>
-    
-    <div className="bg-white flex flex-col xl:hidden w-full h-screen  text-2xl text-black">
-      <div className="flex flex-row w-11/12 bg-white shadow-2xl h-24 mx-7 -my-2 rounded-2xl text-center justify-evenly">
-        <div className="flex flex-col  justify-around ">
-          <div >
-            <FaPlane className="bg-sky-100 text-2xl rounded-full -my-9 p-2 mx-4 w-14 h-14 text-center text-blue-400  " />
+      
+      <div className="bg-white flex flex-col lg:hidden w-full h-screen  text-2xl text-black">
+        <div className="flex flex-row w-11/12 bg-white shadow-2xl h-24 mx-7 -my-2 rounded-2xl text-center justify-evenly ">
+          {data.map((item) => {       
+            return <Icons label={item.name} Icon={item.icon} text={item.text}/>;
+          })}
+        </div>
+       
+        <div className=" bg-white lg:hidden w-11/12 h-48 mx-7 my-11 rounded-2xl  shadow-2xl inline-grid  grid-cols-4 justify-evenly text-center  items-center">
+{/*           
+        {
+            data1.map((arr)=>{
+                return <Icons label1={arr.name1} Font={arr.f}/>
+            })
+          } */}
+          <div className="flex flex-col justify-around items-center">
+          
+            <div className="text-sky-400">
+              <FaCar className="" />
+            </div>
+            <div className="text-sm sm:text-lg">Airport Cabs</div>
           </div>
-          <div className="text-black text-2xl"> Flights</div>
-        </div>
-        <div className="flex flex-col justify-around">
-          <h1 className="">
-            <FaHotel className="text-pink-700 text-2xl bg-pink-200 mx-3 rounded-full -my-9 w-14 h-14 p-2 " />
-          </h1>
-          <h2 className="text-black text-2xl">Hotels</h2>
-        </div>
-        <div className="flex flex-col justify-around">
-          <h1 className="">
-            <FaTrain className="text-2xl text-orange-400 mx-2 bg-orange-200 rounded-full -my-9 w-14 h-14 p-2 " />
-          </h1>
-          <h2 className="text-black text-2xl">Trains</h2>
-        </div>
-        <div className="flex flex-col justify-around ">
-          <h1 className="">
-            <FaUmbrellaBeach className="text-2xl text-green-400 mx-14 bg-gray-100 rounded-full -my-9 p-2 w-14 h-14   " />
-          </h1>
-          <h2 className="text-black text-2xl">Holiday Packages</h2>
+          <div className="flex flex-col justify-around items-center">
+            <div className="text-pink-400">
+              <FaHome className="" />
+            </div>
+            <div className="text-sm sm:text-lg">Homestays</div>
+          </div>
+          <div className="flex flex-col justify-around items-center">
+            <div className="text-yellow-400">
+              <FaBus className="" />
+            </div>
+            <div className="text-sm sm:text-lg">Bus</div>
+          </div>
+          <div className="flex flex-col justify-around items-center">
+            <div className="text-green-400">
+              <FaHiking className="" />
+            </div>
+            <div className="text-sm sm:text-lg">Activities & Tours</div>
+          </div>
+          <div className="flex flex-col justify-around items-center">
+            <div className="text-blue-400">
+              <FaMoneyCheck className="" />
+            </div>
+            <div className="text-sm sm:text-lg">Gift Cards</div>
+          </div>
+          <div className="flex flex-col justify-around items-center">
+            <div className="text-pink-400">
+              <FaVenus className="" />
+            </div>
+            <div className="text-sm sm:text-lg">Nearby Getaways</div>
+          </div>
+          <div className="flex flex-col justify-around items-center">
+            <div className="text-yellow-400">
+              <FaTaxi className="" />
+            </div>
+            <div className="text-sm sm:text-lg">Outstation Cabs</div>
+          </div>
+
+          <div className="flex flex-col justify-around items-center">
+            <div className="text-green-700">
+              <FaMoneyCheckAlt className="" />
+            </div>
+            <div className="text-sm sm:text-lg">Forex</div>
+          </div>
+          <div></div>
         </div>
       </div>
-        <div className=" bg-white  xl:hidden w-11/12 h-48 mx-7 my-11 rounded-2xl  shadow-2xl flex flex-row justify-evenly flex-wrap">
-            <div className="flex flex-col ">
-            <div className="text-sky-400" ><FaCar className="mx-11" /></div>
-            <div>Airport Cabs</div>
-            </div>
-            <div className="flex flex-col">
-            <div className="text-pink-400" ><FaHome className="mx-11"/></div>
-            <div>Homestays</div>
-            </div>
-            <div className="flex flex-col">
-            <div className="text-yellow-400" ><FaBus className="mx-2" /></div>
-            <div>Bus</div>
-            </div>
-            <div className="flex flex-col">
-            <div className="text-green-400" ><FaHiking className="mx-20"/></div>
-            <div>Activities & Tours</div>
-            </div>
-            <div className="flex flex-col">
-            <div className="text-blue-400" ><FaMoneyCheck className="mx-11"/></div>
-            <div>Gift Cards</div>
-            </div>
-            <div className="flex flex-col">
-            <div className="text-pink-400" ><FaVenus className="mx-14"/></div>
-            <div>Nearby Getaways</div>
-            </div>
-            <div className="flex flex-col">
-            <div className="text-yellow-400" ><FaTaxi className="mx-14"/></div>
-            <div>Outstation Cabs</div>
-            </div>
-            
-            <div className="flex flex-col">
-            <div className="text-green-700" ><FaMoneyCheckAlt className="mx-4"/></div>
-            <div>Forex</div>
-            </div>
-            <div></div>
-        </div>
-    </div>
-    
     </>
   );
 };
