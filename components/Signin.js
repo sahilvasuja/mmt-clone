@@ -2,7 +2,7 @@ import { supabase } from "../utils/supabase";
 import { useReducer, useState, useEffect } from "react";
 import Header from "./Header";
 import { useRouter } from "next/router";
-const Signin = ({ isvisible, onClose }) => {
+const Signin = ({ isvisible,setLoggedIn,setName, onClose }) => {
   const router = useRouter();
   const [mail, setmail] = useState("");
   const [pass, setpass] = useState("");
@@ -17,12 +17,9 @@ const Signin = ({ isvisible, onClose }) => {
   }, []);
 
   async function getCurrentUser() {
-    console.log("hello");
-    const {
-      data,
-      error,
-    } = await supabase.auth.getUser();
-    console.log(JSON.stringify(data) + " session");
+    // console.log("hello");
+    const { data, error } = await supabase.auth.getUser();
+    // console.log(JSON.stringify(data) + " session");
     if (error) {
       throw error;
     }
@@ -30,19 +27,21 @@ const Signin = ({ isvisible, onClose }) => {
     // if (!session?.user) {
     //   throw new Error("User not logged in");
     // }
-
-    return data;
+    else {
+      const loginName = data.email;
+      return data;
+    }
   }
-   function getProfile() {
+  function getProfile() {
     //try {
-      setLoading(true);
-      const user = getCurrentUser();
-      console.log(user + "user");
-      // let { data, error, status } = await supabase
-      //   .from("profiles")
-      //   .select(`username, website, avatar_url, useremail`)
-      //   .eq("id", user.id)
-      //   .single();
+    setLoading(true);
+    const user = getCurrentUser();
+    // console.log(user + "user");
+    // let { data, error, status } = await supabase
+    //   .from("profiles")
+    //   .select(`username, website, avatar_url, useremail`)
+    //   .eq("id", user.id)
+    //   .single();
 
     //   if (error && status !== 406) {
     //     throw error;
@@ -70,7 +69,6 @@ const Signin = ({ isvisible, onClose }) => {
   }
 
   const signin = async (e) => {
-
     e.preventDefault();
 
     // useEffect(() => {
@@ -82,14 +80,13 @@ const Signin = ({ isvisible, onClose }) => {
 
     //   })();
     // }, []);
-   
-   
+
     const { data, profile, session, error } =
       await supabase.auth.signInWithPassword({
         email: mail,
         password: pass,
       });
-      getProfile();
+    getProfile();
     // console.log(session + "session");
     // const { data: { user: newuser } }=await supabase.auth.getUser()
     // console.log(newuser +" hello");
@@ -99,17 +96,20 @@ const Signin = ({ isvisible, onClose }) => {
     if (error) {
       alert(JSON.stringify(error));
     } else {
+      alert("Successfull Login");
+      setLoggedIn(true);
+      setName(data.user.email);
+      console.log("sahil" + JSON.stringify(data.user.email));
       onClose();
+
       router.push("/");
-      // console.log("sahil" + JSON.stringify(data));
+      //
     }
   };
   if (!isvisible) return null;
   return (
     <>
       {/* <Header /> */}
-
-      
 
       <div className="  flex justify-center backdrop-grayscale-0 items-center z-40 absolute inset-0 backdrop-blur-sm ">
         <form className="px-24 py-24   bg-sky-900  flex flex-col sm:gap-4 rounded-xl shadow-6xl">
