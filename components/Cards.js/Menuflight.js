@@ -1,4 +1,4 @@
-const Bigdiv = () => {
+const Menuflight = () => {
   return (
     <div className="flex flex-row ">
       <div className="border border-black w-1/4 h-36 flex flex-col  text-black p-2 ">
@@ -31,4 +31,5 @@ const Bigdiv = () => {
     </div>
   );
 };
-export default Bigdiv;
+export default Menuflight
+;

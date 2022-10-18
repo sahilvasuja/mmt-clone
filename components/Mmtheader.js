@@ -12,12 +12,13 @@ import {
   FaWallet,
   FaRegSun,
 } from "react-icons/fa";
-import Demo from "./Demo";
 
-import Bigmobile from "./Bigmobile";
+import Menumobile from "./Cards.js/Menumobile";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Signin from "./signin";
+import Dashboard from "./Dashboard";
+import Dashboardelement from "./Cards.js/Dashboardelement";
 const Mmtheader = () => {
   const [open, setopen] = useState(false);
   const [tick, settick] = useState(true);
@@ -29,8 +30,6 @@ const Mmtheader = () => {
     console.log(loggedIn + "useeffect");
   });
   const Create = async (e) => {
-    // e.preventDefault();
-
     setshowsign(true);
     console.log("create");
     //  router.push("/createaccount");
@@ -175,77 +174,16 @@ const Mmtheader = () => {
                 <h2 className="text-gray-900  font-bold  ">{name}</h2>
               ) : (
                 <h2 className="text-gray-900  font-bold  ">
-                  Login/Sign-up now
+                  Login now
                 </h2>
               )}
             </div>
-            <div className="flex flex-row h-14 border-solid border text-center hover:bg-gray-300 justify-around items-center">
-              <h1 className=" my-1">
-                <FaToolbox className="text-2xl text-black" />
-              </h1>
-              <h2 className="text-gray-900 font-bold">View/Manage Trips</h2>
-            </div>
-            <div className="flex flex-row h-14 border-solid border-2 hover:bg-gray-300 text-center justify-around items-center">
-              <h1 className="pr-14">🎁</h1>
-              <h2 className="text-gray-900  font-bold">Gift Cards</h2>
-            </div>
-            <div className="flex flex-row h-14 border-solid border-2 hover:bg-gray-300 text-center justify-around items-center">
-              <h1 className="pr-14">
-                <FaWallet className="text-2xl text-black" />
-              </h1>
-              <h2 className="text-gray-900 font-bold">My Wallet</h2>
-            </div>
-            <div className="flex flex-row h-14 border-solid border-2 hover:bg-gray-300 text-center justify-around items-center">
-              <h1 className="pr-14">
-                <FaRegSun className="text-2xl text-black" />
-              </h1>
-              <h2 className="text-gray-900  font-bold">Settings</h2>
-            </div>
-            <div className="flex flex-row h-14 border-solid border-2 text-center hover:bg-gray-300 justify-around items-center">
-              <h1 className="pr-6">
-                <FaDharmachakra className="text-2xl text-black" />
-              </h1>
-              <h2 className="text-gray-900 font-bold">Travel Offers</h2>
-            </div>
-            <div className="flex flex-row h-14 border-solid border-2 text-center hover:bg-gray-300 justify-around items-center">
-              <h1 className="pr-14">
-                <FaFighterJet className="item-black text-black text-2xl" />
-              </h1>
-              <h2 className="text-gray-900  font-bold ">Flights</h2>
-            </div>
-            <div className="flex flex-row h-14 border-solid border-2 text-center hover:bg-gray-300 justify-around items-center">
-              <h1 className="pr-14">
-                <FaHotel className="text-pink-700 text-2xl" />
-              </h1>
-              <h2 className="text-gray-900 font-bold">Hotels</h2>
-            </div>
-            <div className="flex flex-row h-14 border-solid border-2 text-center hover:bg-gray-300 justify-around items-center">
-              <h1 className="pr-14">
-                <FaTrain className="text-2xl text-orange-400" />
-              </h1>
-              <h2 className="text-gray-900  font-bold">Trains</h2>
-            </div>
-            <div className="flex flex-row h-14 border-solid border-2 text-center hover:bg-gray-300 justify-around items-center">
-              <h1 className="">
-                <FaUmbrellaBeach className="text-2xl text-black " />
-              </h1>
-              <h2 className="text-gray-900  font-bold">Holiday Packages</h2>
-            </div>
-            <div className="flex flex-col  h-36 items-center justify-evenly ">
-              <h3 className="text-blue-600">User Agreement</h3>
-              <h3 className="text-blue-600">Privacy Policy</h3>
-              <h3 className="text-blue-600">Terms of Service</h3>
-            </div>
+            <Dashboardelement />
           </div>
         </div>
       )}
 
-      <Bigmobile />
-      {/* <Createaccount isvisible={showsign} onClose={()=>{
-          setshowsign(false)
-          console.log("onclose");
-      }
-      }/> */}
+      <Menumobile />
     </>
   );
 };

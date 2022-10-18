@@ -21,77 +21,76 @@ import {
   FaPlane,
   FaShuttleVan,
 } from "react-icons/fa";
-import Icons from "./Icons";
-const Bigmobile = () => {
+import Menumobileicons from "./Menumobileicons";
+const Menumobile = () => {
   // console.log(data.name)
-  const data = [
+  const menu = [
     {
       name: "Flights",
       icon: FaPlane,
-      text: "bg-sky-100  text-blue-400"
+      text: "bg-sky-100  text-blue-400",
     },
     {
       name: "Hotel",
       icon: FaHotel,
-      text: "  text-pink-700  bg-pink-200"
+      text: "  text-pink-700  bg-pink-200",
     },
     {
       name: "Train",
       icon: FaTrain,
-      text: "text-orange-400  bg-orange-200   "
-
+      text: "text-orange-400  bg-orange-200   ",
     },
     {
       name: "Holiday Packages",
       icon: FaUmbrellaBeach,
-      text: "text-green-400  bg-gray-100  "
+      text: "text-green-400  bg-gray-100  ",
     },
   ];
 
-  const data1=[
+  const data1 = [
     {
-        name1: "Airport Cabs",
-        font: FaCar
+      name1: "Airport Cabs",
+      font: FaCar,
     },
     {
-        name1: "Homestays"
+      name1: "Homestays",
     },
     {
-        name1: "Bus"
+      name1: "Bus",
     },
     {
-        name1: "Activities & Tours"
+      name1: "Activities & Tours",
     },
     {
-        name1: "Gift Cards"
+      name1: "Gift Cards",
     },
     {
-        name1: "Nearby Getaways"
+      name1: "Nearby Getaways",
     },
     {
-        name1: "Outstation Cabs"
-    }
-  ]
+      name1: "Outstation Cabs",
+    },
+  ];
 
   return (
     <>
-      
       <div className="bg-white flex flex-col lg:hidden w-full h-screen  text-2xl text-black">
         <div className="flex flex-row w-11/12 bg-white shadow-2xl h-24 mx-7 -my-2 rounded-2xl text-center justify-evenly ">
-          {data.map((item) => {       
-            return <Icons label={item.name} Icon={item.icon} text={item.text}/>;
+          {menu.map((item) => {
+            return (
+              <Menumobileicons label={item.name} Icon={item.icon} text={item.text} />
+            );
           })}
         </div>
-       
+
         <div className=" bg-white lg:hidden w-11/12 h-48 mx-7 my-11 rounded-2xl  shadow-2xl inline-grid  grid-cols-4 justify-evenly text-center  items-center">
-{/*           
+          {/*           
         {
             data1.map((arr)=>{
                 return <Icons label1={arr.name1} Font={arr.f}/>
             })
           } */}
           <div className="flex flex-col justify-around items-center">
-          
             <div className="text-sky-400">
               <FaCar className="" />
             </div>
@@ -147,4 +146,4 @@ const Bigmobile = () => {
   );
 };
 
-export default Bigmobile;
+export default Menumobile;

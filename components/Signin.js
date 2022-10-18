@@ -1,8 +1,8 @@
 import { supabase } from "../utils/supabase";
 import { useReducer, useState, useEffect } from "react";
-import Header from "./Header";
+import Header from "./Cards.js/Header";
 import { useRouter } from "next/router";
-const Signin = ({ isvisible,setLoggedIn,setName, onClose }) => {
+const Signin = ({ isvisible, setLoggedIn, setName, onClose }) => {
   const router = useRouter();
   const [mail, setmail] = useState("");
   const [pass, setpass] = useState("");
@@ -109,8 +109,7 @@ const Signin = ({ isvisible,setLoggedIn,setName, onClose }) => {
   if (!isvisible) return null;
   return (
     <>
-      {/* <Header /> */}
-
+     
       <div className="  flex justify-center backdrop-grayscale-0 items-center z-40 absolute inset-0 backdrop-blur-sm ">
         <form className="px-24 py-24   bg-sky-900  flex flex-col sm:gap-4 rounded-xl shadow-6xl">
           <h1 className="text-blue-400 font-bold my-0 text-2xl">
