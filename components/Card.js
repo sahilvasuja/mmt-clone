@@ -32,7 +32,7 @@ const Card = () => {
     <>
       <div className="flex flex-col bg-white shadow-2xl w-9/12 mx-auto  px-9 py-5  my-24 border-white border-b rounded-2xl">
         <Tabs />
-        <div className="grid grid-cols-2  gap-4 bg-white  my-5">
+        <div className="grid grid-cols-2  gap-4 bg-white  my-5 ">
           {data.map((item) => {
             return <Offers name={item.name} title={item.title} />;
           })}

@@ -124,11 +124,11 @@ const Mmtheader = () => {
               {name}
             </div>
           ) : (
-            <div className=" flex flex-row w-56 h-11 xl:w-64 justify-evenly bg-blue-500 rounded-lg ">
+            <div className=" flex flex-row w-56 h-11 xl:w-64 justify-evenly bg-blue-500 rounded-lg cursor-pointer">
               <h1 className="   text-black text-center my-2  bg-white rounded-full">
                 my
               </h1>
-              <div className="text-sm my-3" onClick={Create}>
+              <div className="text-sm my-3 " onClick={Create}>
                 Login or Create Account
               </div>
 
@@ -173,7 +173,7 @@ const Mmtheader = () => {
               {loggedIn ? (
                 <h2 className="text-gray-900  font-bold  ">{name}</h2>
               ) : (
-                <h2 className="text-gray-900  font-bold  ">
+                <h2 className="text-gray-900  font-bold cursor-pointer ">
                   Login now
                 </h2>
               )}
