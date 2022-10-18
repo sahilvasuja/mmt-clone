@@ -18,9 +18,9 @@ import Dashboard from "../Dashboard";
 const Dashboardelement = () => {
   const dashboard = [
     {
-      names: "View/Manage Trips",
+      names: "Manage Trips",
       icons: FaToolbox,
-      text: "pl-5",
+      text: "pl-1",
       label: "text-2xl text-black",
     },
    

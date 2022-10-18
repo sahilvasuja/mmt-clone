@@ -5,10 +5,11 @@ import Menumobile from "./Cards.js/Menumobile";
 
 import Triptype from "./Cards.js/Triptype";
 import Menutype from "./Cards.js/Menutype";
+// className="w-screen h-full bg-sky-900  p-40 px-14  lg:block  hidden "
 const Nav = () => {
   return (
-    <>
-      <div className="w-screen h-full bg-sky-900  p-40 px-14  lg:block  hidden ">
+    <>  
+          <div className="w-screen h-full bg-sky-900  p-40 px-14  lg:block  hidden ">
         <div className="bg-white w-max-content h-8/12 px-14 relative py-8 -my-14  text-gray-400 rounded-xl lg:block hidden ">
           <div className=" bg-white z-20 shadow-xl w-11/12  my-36  -top-48 h-24 absolute text-gray-400   rounded-xl ">
             <div className="flex flex-row justify-evenly mt-5">

@@ -1,6 +1,6 @@
 import { supabase } from "../utils/supabase";
 import { useReducer, useState } from "react";
-import Header from "../components/Header";
+import Header from "../components/Cards.js/Header";
 import { useRouter } from 'next/router';
 const SignUp = () => {
     const router = useRouter();
@@ -18,7 +18,12 @@ const SignUp = () => {
             email: mail,
             password: pass
         });
-        router.push("/signin");
+        if (error) {
+              alert(JSON.stringify(error));
+            } else {
+        alert("signup successful")
+        router.push("/");
+            }
         // const { data: { user: newuser } }=await supabase.auth.getUser()
         // console.log(newuser +" hello");
         // 

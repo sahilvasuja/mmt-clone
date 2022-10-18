@@ -6,7 +6,7 @@ const Fotter = () => {
       <footer class="p-4 bg-white sm:p-6 dark:bg-gray-900">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
-            <a href="https://flowbite.com/" class="flex items-center">
+            <a href="https://www.makemytrip.com/" class="flex items-center">
               <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 Make My Trip
               </span>
@@ -19,7 +19,7 @@ const Fotter = () => {
               </h2>
               <ul class="text-gray-600 dark:text-gray-400">
                 <li class="mb-4">
-                  <a href="https://flowbite.com/" class="hover:underline">
+                  <a href="https://www.makemytrip.com/" class="hover:underline">
                     Make My Trip
                   </a>
                 </li>

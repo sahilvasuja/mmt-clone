@@ -154,11 +154,11 @@ const Mmtheader = () => {
         }}
       />
       {open && (
-        <div className="flex flex-row fixed top-0 h-screen z-40 w-screen overflow-y-auto backdrop-blur-sm bg-opacity-25 ">
+        <div className="flex flex-row fixed top-0  z-40 w-screen overflow-y-auto backdrop-blur-sm bg-opacity-25 ">
           <div
             className={`${
               open ? "bg-white w-4/12" : "hidden"
-            } bg-slate-100 flex flex-col w-1/3 h-screen lg:hidden  cursor-pointer   `}
+            } bg-slate-100 flex flex-col w-1/3  lg:hidden h-screen cursor-pointer   `}
           >
             <div className="flex flex-row h-14 border-solid border-2 justify-between text-center pt-3 ">
               <h1 className="pl-2 text-2xl text-gray-400">MENU</h1>
