@@ -9,7 +9,7 @@ export default function Account({ session }) {
 
   useEffect(() => {
     getProfile();
-  }, []);
+  }, [session]);
 
   async function getCurrentUser() {
     const {
@@ -50,7 +50,7 @@ export default function Account({ session }) {
         setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
-      alert(error.message);
+      alert(error.message + "53");
     } finally {
       setLoading(false);
     }
@@ -63,7 +63,6 @@ export default function Account({ session }) {
 
       const updates = {
         id: user.id,
-        useremail,
         username,
         website,
         avatar_url,
@@ -76,14 +75,14 @@ export default function Account({ session }) {
         throw error;
       }
     } catch (error) {
-      alert(error.message);
+      alert(error.message + "78");
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <div className="form-widget">
+    <div className="form-widget bg-green-600">
       <div>
         <label htmlFor="email">Email</label>
         <input id="email" type="text" value={session?.user.username} disabled />

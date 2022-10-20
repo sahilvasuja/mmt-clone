@@ -22,6 +22,8 @@ import Dashboardelement from "./Cards.js/Dashboardelement";
 const Mmtheader = () => {
   const [open, setopen] = useState(false);
   const [tick, settick] = useState(true);
+  const [drop, setDrop] = useState(false);
+  const [logout, setlogout] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [showsign, setshowsign] = useState(false);
   const [name, setName] = useState();
@@ -29,6 +31,14 @@ const Mmtheader = () => {
   useEffect(() => {
     console.log(loggedIn + "useeffect");
   });
+  const dropdown = async (e) => {
+    console.log("drop" + drop);
+    setDrop(!drop);
+  };
+  const UserProfile = async (e) => {
+    e.preventDefault();
+    router.push("/Userprofile");
+  };
   const Create = async (e) => {
     setshowsign(true);
     console.log("create");
@@ -120,9 +130,57 @@ const Mmtheader = () => {
         {}
         <div className=" flex-row hidden lg:flex">
           {loggedIn ? (
-            <div className="text-sm my-3" onClick={Create}>
-              {name}
-            </div>
+            <>
+              <div className="text-sm my-3 " onClick={dropdown}>
+                {name}
+              </div>
+              <div
+                id="dropdownNavbar"
+                class={` z-10 w-32 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 ${
+                  drop ? "visible" : "hidden"
+                }`}
+              >
+                <ul
+                  class="py-1 text-sm text-gray-700 dark:text-gray-400"
+                  aria-labelledby="dropdownNavbarButton"
+                >
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      onClick={UserProfile}
+                    >
+                      Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Settings
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Earnings
+                    </a>
+                  </li>
+                </ul>
+                <div class="py-1">
+                  <a
+                    href="#"
+                    class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
+                  >
+                    Sign out
+                  </a>
+                </div>
+              </div>
+              {/* {setLoggedIn(false)} */}
+            </>
           ) : (
             <div className=" flex flex-row w-56 h-11 xl:w-64 justify-evenly bg-blue-500 rounded-lg cursor-pointer">
               <h1 className="   text-black text-center my-2  bg-white rounded-full">
@@ -153,6 +211,7 @@ const Mmtheader = () => {
           console.log("onclose");
         }}
       />
+
       {open && (
         <div className="flex flex-row fixed top-0  z-40 w-screen overflow-y-auto backdrop-blur-sm bg-opacity-25 ">
           <div
