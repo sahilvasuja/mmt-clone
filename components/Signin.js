@@ -1,5 +1,5 @@
 import { supabase } from "../utils/supabase";
-import { useReducer, useState, useEffect } from "react";
+import { useReducer, useState, useEffect, useCallback } from "react";
 
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -10,13 +10,25 @@ const Signin = ({ isvisible, setLoggedIn, setName, onClose }) => {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
   const [website, setWebsite] = useState(null);
-
+  const [isLoaded, setIsLoaded] = useState(false);
   const [avatar_url, setAvatarUrl] = useState(null);
 
   useEffect(() => {
     getProfile();
   }, []);
 
+  const initUser = useCallback(async () => {
+    const session = await supabase.auth.setSession();
+    console.log(session + "21");
+    await supabase.auth.signInWithPassword({
+      refreshToken: session?.refresh_token,
+    });
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    initUser();
+  }, [initUser]);
   async function getCurrentUser() {
     // console.log("hello");
     const { data, error } = await supabase.auth.getUser();
@@ -92,7 +104,10 @@ const Signin = ({ isvisible, setLoggedIn, setName, onClose }) => {
       await supabase.auth.signInWithPassword({
         email: mail,
         password: pass,
+        refreshToken: session?.refresh_token,
       });
+    await supabase.auth.setSession(data.session.refresh_token);
+    console.log(JSON.stringify(data) + "109");
     getProfile();
     // console.log(session + "session");
     // const { data: { user: newuser } }=await supabase.auth.getUser()

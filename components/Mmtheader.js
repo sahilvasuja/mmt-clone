@@ -12,7 +12,7 @@ import {
   FaWallet,
   FaRegSun,
 } from "react-icons/fa";
-
+import { supabase } from "../utils/supabase";
 import Menumobile from "./Cards.js/Menumobile";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -30,7 +30,13 @@ const Mmtheader = () => {
   const router = useRouter();
   useEffect(() => {
     console.log(loggedIn + "useeffect");
-  });
+    (async () => {
+      const { data, error } = await supabase.auth.getSession();
+      console.log(JSON.stringify(data) + "35");
+    })();
+  },[]);
+  
+
   const dropdown = async (e) => {
     console.log("drop" + drop);
     setDrop(!drop);
