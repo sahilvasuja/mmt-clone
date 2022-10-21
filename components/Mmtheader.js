@@ -19,23 +19,29 @@ import { useEffect, useState } from "react";
 import Signin from "./signin";
 import Dashboard from "./Dashboard";
 import Dashboardelement from "./Cards.js/Dashboardelement";
+import {
+  useSession,
+  useSupabaseClient,
+  useUser,
+} from "@supabase/auth-helpers-react";
 const Mmtheader = () => {
   const [open, setopen] = useState(false);
-  const [tick, settick] = useState(true);
   const [drop, setDrop] = useState(false);
-  const [logout, setlogout] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [showsign, setshowsign] = useState(false);
   const [name, setName] = useState();
   const router = useRouter();
+
+  const session = useSession();
+  // const supabase = useSupabaseClient();
+  const user = useUser();
+
   useEffect(() => {
-    console.log(loggedIn + "useeffect");
-    (async () => {
-      const { data, error } = await supabase.auth.getSession();
-      console.log(JSON.stringify(data) + "35");
-    })();
-  },[]);
-  
+    if (session) {
+      setLoggedIn(true);
+      setName(user?.user_metadata?.first_name);
+    }
+  }, [session, user]);
 
   const dropdown = async (e) => {
     console.log("drop" + drop);
@@ -43,7 +49,7 @@ const Mmtheader = () => {
   };
   const UserProfile = async (e) => {
     e.preventDefault();
-    router.push("/Userprofile");
+    router.push("/account");
   };
   const Create = async (e) => {
     setshowsign(true);
@@ -97,7 +103,15 @@ const Mmtheader = () => {
             <FaUserCircle className=" sm:text-2xl text:lg" />
           </div>
           {loggedIn ? (
-            <div className="sm:text-lg text-xs">{name}</div>
+            <>
+              <div className="sm:text-lg text-xs">{name}</div>
+              <button
+                className="bg-white text-gray-800"
+                onClick={async () => await supabase.auth.signOut()}
+              >
+                Sign Out
+              </button>
+            </>
           ) : (
             <div className="sm:text-lg text-xs">Login Now</div>
           )}
@@ -137,6 +151,15 @@ const Mmtheader = () => {
         <div className=" flex-row hidden lg:flex">
           {loggedIn ? (
             <>
+              <button
+                className="bg-white text-gray-800"
+                onClick={async () => {
+                  await supabase.auth.signOut();
+                  setLoggedIn(false);
+                }}
+              >
+                Sign Out
+              </button>
               <div className="text-sm my-3 " onClick={dropdown}>
                 {name}
               </div>
