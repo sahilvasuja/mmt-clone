@@ -1,80 +1,28 @@
-import { supabase } from "../utils/supabase";
+// import { supabase } from "../utils/supabase";
 import { useReducer, useState, useEffect, useCallback } from "react";
 
 import { useRouter } from "next/router";
 import Link from "next/link";
+import {
+  useSession,
+  useSupabaseClient,
+  useUser,
+} from "@supabase/auth-helpers-react";
+
 const Signin = ({ isvisible, setLoggedIn, setName, onClose }) => {
   const router = useRouter();
   const [mail, setmail] = useState("");
   const [pass, setpass] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [username, setUsername] = useState(null);
-  const [website, setWebsite] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [avatar_url, setAvatarUrl] = useState(null);
+
+  const session = useSession();
+  const supabase = useSupabaseClient();
+  const user = useUser();
 
   useEffect(() => {
-    getProfile();
-  }, []);
-
-  const initUser = useCallback(async () => {
-    const session = await supabase.auth.setSession();
-    console.log(session + "21");
-    await supabase.auth.signInWithPassword({
-      refreshToken: session?.refresh_token,
-    });
-    setIsLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    initUser();
-  }, [initUser]);
-  async function getCurrentUser() {
-    // console.log("hello");
-    const { data, error } = await supabase.auth.getUser();
-    console.log(
-      JSON.stringify(data.user?.user_metadata?.first_name) + " session"
-    );
-    if (error) {
-      throw error;
+    if (session) {
+      router.push("/");
     }
-
-    // if (!session?.user) {
-    //   throw new Error("User not logged in");
-    // }
-    else {
-      const loginName = data.email;
-      return data;
-    }
-  }
-  function getProfile() {
-    //try {
-    setLoading(true);
-    const user = getCurrentUser();
-    // console.log(user + "user");
-    // let { data, error, status } = await supabase
-    //   .from("profiles")
-    //   .select(`username, website, avatar_url, useremail`)
-    //   .eq("id", user.id)
-    //   .single();
-
-    //   if (error && status !== 406) {
-    //     throw error;
-    //   }
-
-    //   if (data) {
-    //     console.log(data + "data");
-    //     setmail(data.useremail);
-    //     setUsername(data.username);
-    //     setWebsite(data.website);
-    //     setAvatarUrl(data.avatar_url);
-    //   }
-    // } catch (error) {
-    //   alert(error.message);
-    // } finally {
-    //   setLoading(false);
-    // }
-  }
+  }, [session, user]);
 
   function handlemail(e) {
     setmail(e.target.value);
@@ -90,16 +38,6 @@ const Signin = ({ isvisible, setLoggedIn, setName, onClose }) => {
   const signin = async (e) => {
     e.preventDefault();
 
-    // useEffect(() => {
-    //   (async () => {
-    //     const { data: user, email} = await supabase
-    //       .from("User")
-    //       .select("*, profiles:id (name)")
-    //       .order("created_at");
-
-    //   })();
-    // }, []);
-
     const { data, profile, session, error } =
       await supabase.auth.signInWithPassword({
         email: mail,
@@ -107,26 +45,15 @@ const Signin = ({ isvisible, setLoggedIn, setName, onClose }) => {
         refreshToken: session?.refresh_token,
       });
     await supabase.auth.setSession(data.session.refresh_token);
-    console.log(JSON.stringify(data) + "109");
-    getProfile();
-    // console.log(session + "session");
-    // const { data: { user: newuser } }=await supabase.auth.getUser()
-    // console.log(newuser +" hello");
-    //
-    // console.log(user,error,mail,pass);
-    // error? console.log(error) : console.log(user);
+
     if (error) {
       alert(JSON.stringify(error));
     } else {
-      alert("Successfull Login");
-      console.log(data + "105");
       setLoggedIn(true);
       setName(data.user?.user_metadata?.first_name);
-      console.log("sahil" + JSON.stringify(data.user.email));
       onClose();
 
       router.push("/");
-      //
     }
   };
   if (!isvisible) return null;

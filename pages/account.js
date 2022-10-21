@@ -1,83 +1,31 @@
-import { supabase } from "../utils/supabase";
 import { useState, useEffect } from "react";
-export default function Account({ session }) {
+// import {
+//   useSession,
+//   useSupabaseClient,
+//   useUser,
+// } from "@supabase/auth-helpers-react";
+import { useRouter } from "next/router";
+import { withPageAuth } from "@supabase/supabase-auth-helpers/nextjs";
+
+export default function Account({ user }) {
   const [loading, setLoading] = useState(true);
-  const [username, setUsername] = useState(null);
-  const [website, setWebsite] = useState(null);
-  const [email, setemail] = useState();
-  const [avatar_url, setAvatarUrl] = useState(null);
+  const [name, setName] = useState("");
+  const [website, setWebsite] = useState("");
+  const [avatar_url, setAvatarUrl] = useState("");
+
+  const router = useRouter();
 
   useEffect(() => {
     getProfile();
-  }, [session]);
-
-  async function getCurrentUser() {
-    const {
-      data: { session },
-      error,
-    } = await supabase.auth.getSession();
-
-    if (error) {
-      throw error;
-    }
-
-    if (!session?.user) {
-      throw new Error("User not logged in");
-    }
-
-    return session.user;
-  }
+  }, [user]);
 
   async function getProfile() {
-    try {
-      setLoading(true);
-      const user = await getCurrentUser();
+    setLoading(true);
 
-      let { data, error, status } = await supabase
-        .from("profiles")
-        .select(`username, website, avatar_url, useremail`)
-        .eq("id", user.id)
-        .single();
-
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        setemail(data.useremail);
-        setUsername(data.username);
-        setWebsite(data.website);
-        setAvatarUrl(data.avatar_url);
-      }
-    } catch (error) {
-      alert(error.message + "53");
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function updateProfile({ username, website, avatar_url }) {
-    try {
-      setLoading(true);
-      const user = await getCurrentUser();
-
-      const updates = {
-        id: user.id,
-        username,
-        website,
-        avatar_url,
-        updated_at: new Date(),
-      };
-
-      let { error } = await supabase.from("profiles").upsert(updates);
-
-      if (error) {
-        throw error;
-      }
-    } catch (error) {
-      alert(error.message + "78");
-    } finally {
-      setLoading(false);
+    if (user) {
+      setName(user?.user_metadata?.first_name);
+    } else {
+      router.push("/");
     }
   }
 
@@ -92,7 +40,7 @@ export default function Account({ session }) {
         <input
           id="username"
           type="text"
-          value={username || ""}
+          value={name || ""}
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
@@ -127,3 +75,5 @@ export default function Account({ session }) {
     </div>
   );
 }
+
+export const getServerSideProps = withPageAuth();
