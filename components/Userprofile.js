@@ -1,12 +1,14 @@
 import React from "react";
 import { supabase } from "../utils/supabase";
 import { useState, useEffect } from "react";
-import Signin from "../components/signin";
-export default function Profile({ session }) {
-  const [email, setemail] = useState();
-  const [name, setName] = useState();
+import Signin from "./signin";
+import { useSession } from "@supabase/auth-helpers-react";
+export default function Profile({email,name}) {
+   const [phone, setphone] = useState("+");
+ const [phoneplus, setphoneplus] = useState(false);
   const [edit, setEdit] = useState(false);
-
+  const [loading,setLoading]=useState(false)
+  const session=useSession();
   useEffect(() => {
     getProfile();
   }, [session]);
@@ -14,6 +16,13 @@ export default function Profile({ session }) {
   function Edit() {
     setEdit(!edit);
   }
+//   async function phoneno(e){
+//     // edit(!edit);
+//     // setphone("")
+//     //  setphoneplus(true);
+//     setphone(e.target.value)
+    
+//   }
   async function getCurrentUser() {
     const {
       data: { session },
@@ -50,36 +59,35 @@ export default function Profile({ session }) {
         setemail(data.useremail);
       }
     } catch (error) {
-      alert(error.message + "53");
+    //   alert(error.message + "53");
     } finally {
       setLoading(false);
     }
   }
 
-  async function updateProfile({ username, website, avatar_url }) {
-    try {
-      setLoading(true);
-      const user = await getCurrentUser();
+//   async function updateProfile({ username, website, avatar_url }) {
+//     try {
+//       setLoading(true);
+     
+//       const updates = {
+//         id: user.id,
+//         username,
+//         website,
+//         avatar_url,
+//         updated_at: new Date(),
+//       };
 
-      const updates = {
-        id: user.id,
-        username,
-        website,
-        avatar_url,
-        updated_at: new Date(),
-      };
+//       let { error } = await supabase.from("profiles").upsert(updates);
 
-      let { error } = await supabase.from("profiles").upsert(updates);
-
-      if (error) {
-        throw error;
-      }
-    } catch (error) {
-      alert(error.message + "78");
-    } finally {
-      setLoading(false);
-    }
-  }
+//       if (error) {
+//         throw error;
+//       }
+//     } catch (error) {
+//       alert(error.message + "78");
+//     } finally {
+//       setLoading(false);
+//     }
+//   }
 
   return (
     <>
@@ -96,7 +104,7 @@ export default function Profile({ session }) {
                   />
                 </div>
                 <h1 class="text-gray-900 text-center font-bold text-xl leading-8 my-1">
-                  Sahil Vasuja
+                  {name}
                 </h1>
                 <h3 class="text-gray-600 text-center font-lg text-semibold leading-6">
                   PERSONAL PROFILE
@@ -107,12 +115,17 @@ export default function Profile({ session }) {
                   <li class=" text-center items-center py-3">
                     Save Travellers{" "}
                   </li>
-                  <li
+                  {/* <li
                     class="text-center items-center  py-3"
-                    onClick={() => supabase.auth.signOut()}
+                    onClick={() => supabase.auth.signOut()
+                        
+                        }
+                     
+
                   >
+                 
                     Logout
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
@@ -158,18 +171,31 @@ export default function Profile({ session }) {
                     </div>
                     <div class="grid grid-cols-2">
                       <div class="px-4 py-2 font-semibold">Contact No.</div>
-                      {!edit ? (
-                        <input
-                          class="px-4 py-2 bg-white"
-                          value={"1234567890"}
-                          disabled
-                        />
+                      <input class="px-4 py-2 bg-white" value={"8766111117"} disabled/>
+                      {/* {!edit ? (
+                        phone()
+                        
                       ) : (
                         <input
                           class="px-4 py-2 bg-white"
-                          value={"1234567890"}
+                        //   value={"1234567890"}
                         />
-                      )}
+                      )} */}
+                    
+                       {/* {
+                        !phoneplus ? 
+                            (
+                                <input class="px-4 py-2 bg-white" value={phone} onClick={phoneno}
+                                    
+                                    />
+                            )
+                            : (
+                                <input class="px-4 py-2 bg-white" value={phone}/>
+                            )
+
+                        
+                      } */}
+                       
                     </div>
 
                     <div class="grid grid-cols-2">
@@ -177,7 +203,7 @@ export default function Profile({ session }) {
                       <div class="px-4 py-2">
                         <div
                           class="text-blue-800 outline-none bg-white"
-                          href="mailto:jane@example.com"
+                          
                           disabled
                         >
                           {email}
@@ -212,7 +238,7 @@ export default function Profile({ session }) {
           </div>
         </div>
       </div>
-      <Signin setName={setName} setemail={setemail} />
+      {/* <Signin setName={setName} setemail={setemail} /> */}
     </>
   );
 }

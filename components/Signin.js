@@ -2,6 +2,7 @@
 import { useReducer, useState, useEffect, useCallback } from "react";
 
 import { useRouter } from "next/router";
+ import Userprofile from "./Userprofile";
 import Link from "next/link";
 import {
   useSession,
@@ -60,65 +61,7 @@ const Signin = ({ isvisible, setLoggedIn, setName, onClose }) => {
   return (
     <>
       <div className="  flex justify-center backdrop-grayscale-0 items-center z-40 absolute inset-0 backdrop-blur-sm ">
-        {/* <form className="px-24 py-24   bg-sky-900  flex flex-col sm:gap-4 rounded-xl shadow-6xl">
-          <h1 className="text-blue-400 font-bold my-0 text-2xl">
-            Welcome Back
-          </h1>
-          <h3 className="text-gray-400">Sign in to use your account</h3>
-          <div class="relative">
-            <input
-              type="text"
-              placeholder="Enter your email..."
-              className=" peer placeholder-transparent px-2  w-96   py-4  hover:border-emerald-400 duration-100 border border-slate-300 rounded-xl text-sm shadow-sm  bg-slate-50  outline-none  font-medium text-gray-700"
-              value={mail}
-              onChange={(e) => handlemail(e)}
-            />
-            <label
-              for="username"
-              className=" absolute left-0 -top-56.9  ml-4 -mt-0  text-xs text-green-600  
-                peer-placeholder-shown:text-gray-400 
-                peer-placeholder-shown:my-4
-                peer-placeholder-shown:text-base 
-                duration-300"
-            >
-              Enter your email...
-            </label>
-          </div>
-
-          <div className="relative">
-            <input
-              type="password"
-              placeholder="Enter a pasword..."
-              className=" peer w-96 px-2 py-4 placeholder-transparent hover:border-emerald-400 duration-100 border border-slate-300 rounded-xl text-sm shadow-sm  bg-slate-50  outline-none  font-medium text-gray-700"
-              value={pass}
-              onChange={(e) => handlpass(e)}
-            />
-            <label
-              for="username"
-              class=" absolute left-0 -top-56.9  ml-4 -mt-0  text-xs text-green-600  
-                peer-placeholder-shown:text-gray-400 
-                peer-placeholder-shown:my-4
-                peer-placeholder-shown:text-base 
-                duration-300"
-            >
-              Enter a pasword...
-            </label>
-          </div>
-
-          <button
-            className="px-4 py-3 rounded-xl bg-emerald-500 text-white hover:bg-emerald-400 duration-100"
-            onClick={signin}
-          >
-            Sign In
-          </button>
-          <button
-            className="text-2xl text-gray-700 bg-white px-4 py-3 rounded-xl  "
-            onClick={onClose}
-          >
-            Back
-          </button>
-        </form> */}
-
+       
         <div class="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
           <form class="space-y-6" action="#">
             <h5 class="text-xl font-medium text-gray-900 dark:text-white">
@@ -206,6 +149,9 @@ const Signin = ({ isvisible, setLoggedIn, setName, onClose }) => {
           </form>
         </div>
       </div>
+     <Userprofile
+      mails={mail}
+     />
     </>
   );
 };

@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Signin from "./signin";
 import Dashboard from "./Dashboard";
+import Userprofile from "./Userprofile";
 import Dashboardelement from "./Cards.js/Dashboardelement";
 import {
   useSession,
@@ -30,6 +31,7 @@ const Mmtheader = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [showsign, setshowsign] = useState(false);
   const [name, setName] = useState();
+  const [Email, setEmail] = useState();
   const router = useRouter();
 
   const session = useSession();
@@ -40,6 +42,7 @@ const Mmtheader = () => {
     if (session) {
       setLoggedIn(true);
       setName(user?.user_metadata?.first_name);
+      setEmail(user?.email);
     }
   }, [session, user]);
 
@@ -47,9 +50,19 @@ const Mmtheader = () => {
     console.log("drop" + drop);
     setDrop(!drop);
   };
+
+
+  
   const UserProfile = async (e) => {
     e.preventDefault();
-    router.push("/account");
+    //router.push("/check");
+    router.push({
+      pathname: '/check',
+      query: { name: name,
+              email: Email,
+              LoggedIn: loggedIn,
+     }
+  });
   };
   const Create = async (e) => {
     setshowsign(true);
@@ -201,8 +214,11 @@ const Mmtheader = () => {
                 </ul>
                 <div class="py-1">
                   <a
-                    href="#"
                     class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
+                    onClick={async () => {
+                      await supabase.auth.signOut();
+                      setLoggedIn(false);
+                    }}
                   >
                     Sign out
                   </a>
@@ -230,7 +246,7 @@ const Mmtheader = () => {
           </div>
         </div>
       </div>
-
+      {/* <Userprofile setLoggedIn={setLoggedIn} names={name} Emails={Email} /> */}
       <Signin
         isvisible={showsign}
         setLoggedIn={setLoggedIn}
