@@ -99,7 +99,8 @@ export default function Profile({email,name}) {
                 <div class="image overflow-hidden">
                   <img
                     class="h-auto w-full mx-auto"
-                    src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
+                    // src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
+                    src="https://lavinephotography.com.au/wp-content/uploads/2022/09/Fam_Kids024-1.jpg"
                     alt=""
                   />
                 </div>
