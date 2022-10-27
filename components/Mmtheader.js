@@ -118,12 +118,12 @@ const Mmtheader = () => {
           {loggedIn ? (
             <>
               <div className="sm:text-lg text-xs">{name}</div>
-              <button
+              {/* <button
                 className="bg-white text-gray-800"
                 onClick={async () => await supabase.auth.signOut()}
               >
                 Sign Out
-              </button>
+              </button> */}
             </>
           ) : (
             <div className="sm:text-lg text-xs">Login Now</div>
@@ -164,7 +164,7 @@ const Mmtheader = () => {
         <div className=" flex-row hidden lg:flex">
           {loggedIn ? (
             <>
-              <button
+              {/* <button
                 className="bg-white text-gray-800"
                 onClick={async () => {
                   await supabase.auth.signOut();
@@ -172,7 +172,7 @@ const Mmtheader = () => {
                 }}
               >
                 Sign Out
-              </button>
+              </button> */}
               <div className="text-sm my-3 " onClick={dropdown}>
                 {name}
               </div>
