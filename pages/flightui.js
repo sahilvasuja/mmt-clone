@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
+import { supabase } from '../utils/supabase';
 import { FaArrowLeft,FaPlaneDeparture } from "react-icons/fa";
 const flightui = () => {
     const [journeyBeggin,setJourneyBeggin]=useState("Delhi");
@@ -20,57 +21,25 @@ const flightui = () => {
       
       setMember(e.target.value + "Traveller");
   }
+  useEffect(()=>{
+    fetchData();
+  },[]);
+  async function fetchData(){
+    const { data, error } = await supabase
+  .from('flight')
+  .select('From,To')
+  console.log(data)
+//   if(JSON.stringify(data.From)==journeyBeggin && JSON.stringify(data.To)==journeyOver){
+//     console.log(JSON.stringify(data) + "33");
+//   }
+//   else{
+//     console.log(data)
+//   }
+  
+  }
+  
   return (
    <>
-
-
-{/*    
-   <div className='bg-white max-h-screen   w-screen'>
-
-   
-    <div className='text-black bg-white flex flex-row p-8 gap-5 text-center'>
-    <FaArrowLeft classname=" text-2xl  text-center item-center" />
-    <h1 className='text-black text-2xl'>Flight Search</h1>
-    </div>
-    <div className='flex flex-row  border justify-evenly bg-white -m-8 mx-96 w-3/6 rounded-sm z-20 shadow-sm'>
-        <h2 className='text-black text-xl p-4 bg-sky-600'>ONE WAY</h2>
-        <h2 className='text-black text-xl p-4'>ROUNDTRIP</h2>
-        <h2 className='text-black text-xl p-4'>MULTICITY</h2>
-    </div>
-    <div className='flex flex-col  bg-white my-14 gap-5'>
-    <div className="border border-black w-3/6 gap-10 mx-96 flex flex-row  bg-gray-400 text-black p-2 ">
-    <FaPlaneDeparture className="text-black text-center my-10  text-4xl"/>
-        <div className='flex flex-col'>
-        <h5 className="text-xl">FROM</h5>
-    <input type="text" id="default-input" class="text-2xl bg-gray-400 text-black border border-gray-300  rounded-lg focus:ring-blue-500 focus:border-blue-500 block   dark:bg-gray-400 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" value={journeyBeggin} onChange={Startjourney}/>
-    <input type="text" id="default-input" class="text-2xl bg-gray-400 text-black border border-gray-300  rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-400 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" value={` ${journeyBeggin.substring(0,3)} ${journeyBeggin} International   AIRPORT`}/>
-     */}
-        {/* <input className="text-2xl bg-gray-400 text-black" value={journeyBeggin} onChange={Startjourney}></input> */}
-        {/* <input className="text-lg bg-gray-400" value={` ${journeyBeggin.substring(0,3)} ${journeyBeggin} International AIRPORT`}></input> */}
-        {/* </div>
-      </div>
-
-    
-    <div className="border border-black w-3/6 gap-10 mx-96 flex flex-row  bg-gray-400 text-black p-2 ">
-    <FaPlaneDeparture className="text-black text-center my-10  text-4xl"/>
-        <div className='flex flex-col'>
-        <h5 className="text-xl">FROM</h5>
-    <input type="text" id="default-input" class="text-2xl bg-gray-400 text-black border border-gray-300  rounded-lg focus:ring-blue-500 focus:border-blue-500 block   dark:bg-gray-400 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" value={journeyOver} onChange={Endjourney}/>
-    <input type="text" id="default-input" class="text-2xl bg-gray-400 text-black border border-gray-300  rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-400 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" value={` ${journeyOver.substring(0,3)} ${journeyOver} International AIRPORT...`}/>
-    </div>
-    </div>
-      <div className="border border-black flex flex-col text-black p-2">
-        <h5 className="text-xl">TO</h5>
-        <input className="text-2xl bg-white" value={journeyOver} onChange={Endjourney} ></input>
-        <input className="text-lg bg-white" value={` ${journeyOver.substring(0,3)} ${journeyOver} International AIRPORT...`}></input>
-      </div>
-      <div className="border border-black flex flex-col  text-black p-2">
-        <div className="text-xl">DEPARTURE </div>
-        <input className="text-2xl bg-white" value={journeydate} onChange={date}></input>
-        <div className="text-lg">Friday</div>
-      </div>
-      </div>
-      </div> */}
 
 
 
