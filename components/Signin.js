@@ -2,7 +2,7 @@
 import { useReducer, useState, useEffect, useCallback } from "react";
 
 import { useRouter } from "next/router";
- import Userprofile from "./Userprofile";
+import Userprofile from "./Userprofile";
 import Link from "next/link";
 import {
   useSession,
@@ -61,7 +61,6 @@ const Signin = ({ isvisible, setLoggedIn, setName, onClose }) => {
   return (
     <>
       <div className="  flex justify-center backdrop-grayscale-0 items-center z-40 absolute inset-0 backdrop-blur-sm ">
-       
         <div class="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
           <form class="space-y-6" action="#">
             <h5 class="text-xl font-medium text-gray-900 dark:text-white">
@@ -149,7 +148,7 @@ const Signin = ({ isvisible, setLoggedIn, setName, onClose }) => {
           </form>
         </div>
       </div>
-     <Userprofile
+      <Userprofile
       mails={mail}
      />
     </>

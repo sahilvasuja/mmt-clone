@@ -47,6 +47,7 @@ const Dashboardelement = () => {
       icons: FaFighterJet,
       text: "pr-6",
       label: "text-2xl text-sky-400",
+      
     },
 
     {

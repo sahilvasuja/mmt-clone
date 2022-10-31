@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import Signin from "./signin";
 import { useSession } from "@supabase/auth-helpers-react";
 export default function Profile({email,name}) {
-   const [phone, setphone] = useState("+");
+   const [phone, setPhone] = useState("8766111117");
  const [phoneplus, setphoneplus] = useState(false);
+ const [gender,setGender]=useState("Male");
+ const [bday,setBday]=useState("12 sep 2000")
   const [edit, setEdit] = useState(false);
   const [loading,setLoading]=useState(false)
   const session=useSession();
@@ -16,13 +18,21 @@ export default function Profile({email,name}) {
   function Edit() {
     setEdit(!edit);
   }
-//   async function phoneno(e){
-//     // edit(!edit);
-//     // setphone("")
-//     //  setphoneplus(true);
-//     setphone(e.target.value)
-    
-//   }
+  async function Gender(e){
+    // edit(!edit);
+    e.preventDefault();
+     setGender(e.target.value)
+  }
+  async function Bday(e){
+    // edit(!edit);
+    e.preventDefault();
+     setBday(e.target.value)
+  }
+  async function Phone(e){
+    // edit(!edit);
+    e.preventDefault();
+     setPhone(e.target.value)
+  }
   async function getCurrentUser() {
     const {
       data: { session },
@@ -161,46 +171,36 @@ export default function Profile({email,name}) {
                       <div class="px-4 py-2 font-semibold">Name</div>
                       <div class="px-4 py-2 bg-white">{name}</div>
                     </div>
-
+                    
                     <div class="grid grid-cols-2">
                       <div class="px-4 py-2 font-semibold">Gender</div>
-                      <input
+                      {!edit ? ( <input
                         class="px-4 py-2 bg-white"
-                        value={"Male"}
+                        value={gender} onChange={Gender}
                         disabled
                       />
+                      ) : (
+                        <input
+                        class="px-4 py-2 bg-white"
+                        value={gender}  onChange={Gender} />
+                        
+                      )
+                      }
                     </div>
                     <div class="grid grid-cols-2">
                       <div class="px-4 py-2 font-semibold">Contact No.</div>
-                      <input class="px-4 py-2 bg-white" value={"8766111117"} disabled/>
-                      {/* {!edit ? (
-                        phone()
-                        
+                      {!edit ? (
+                      <input class="px-4 py-2 bg-white" value={phone} onChange={Phone} disabled/>
                       ) : (
-                        <input
-                          class="px-4 py-2 bg-white"
-                        //   value={"1234567890"}
-                        />
-                      )} */}
-                    
-                       {/* {
-                        !phoneplus ? 
-                            (
-                                <input class="px-4 py-2 bg-white" value={phone} onClick={phoneno}
-                                    
-                                    />
-                            )
-                            : (
-                                <input class="px-4 py-2 bg-white" value={phone}/>
-                            )
-
-                        
-                      } */}
+                        <input class="px-4 py-2 bg-white" value={phone} onChange={Phone} />
+                      )
+                      }
+                     
                        
                     </div>
 
                     <div class="grid grid-cols-2">
-                      <div class="px-4 py-2 font-semibold">Email.</div>
+                      <div class="px-4 py-2 font-semibold">Email</div>
                       <div class="px-4 py-2">
                         <div
                           class="text-blue-800 outline-none bg-white"
@@ -216,13 +216,13 @@ export default function Profile({email,name}) {
                       {!edit ? (
                         <input
                           class="px-4 py-2 bg-white"
-                          value={"12 sep 2000"}
+                          value={bday} onChange={Bday}
                           disabled
                         />
                       ) : (
                         <input
                           class="px-4 py-2 bg-white"
-                          value={"12 sep 2000"}
+                          value={bday} onChange={Bday}
                         />
                       )}
                     </div>

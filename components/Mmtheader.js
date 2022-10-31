@@ -65,7 +65,7 @@ const Mmtheader = () => {
   });
   };
   const Create = async (e) => {
-    setshowsign(true);
+     setshowsign(true);
     console.log("create");
     //  router.push("/createaccount");
   };
@@ -110,23 +110,67 @@ const Mmtheader = () => {
         </div>
         <div
           className="bg-blue-300 sm:px-3 sm:py-3 justify-evenly mx-5 h-8 sm:h-10 w-28 text-center items-center    sm:w-36 flex rounded-full lg:hidden "
-          onClick={Create}
+         
         >
           <div>
             <FaUserCircle className=" sm:text-2xl text:lg" />
           </div>
           {loggedIn ? (
             <>
-              <div className="sm:text-lg text-xs">{name}</div>
-              {/* <button
-                className="bg-white text-gray-800"
-                onClick={async () => await supabase.auth.signOut()}
+              <div className="sm:text-lg text-xs" onClick={dropdown}>{name}</div>
+              <div
+                id="dropdownNavbar"
+                class={` z-10 w-32 bg-white rounded divide-y mt-11 divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 ${
+                  drop ? "visible" : "hidden"
+                }`}
               >
-                Sign Out
-              </button> */}
+                <ul
+                  class="py-1 text-sm text-gray-700 dark:text-gray-400"
+                  aria-labelledby="dropdownNavbarButton"
+                >
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      onClick={UserProfile}
+                    >
+                      Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Settings
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Earnings
+                    </a>
+                  </li>
+                </ul>
+                <div class="py-1">
+                  <a
+                    class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
+                    onClick={async () => {
+                      await supabase.auth.signOut();
+                      setLoggedIn(false);
+                    }}
+                  >
+                    Sign out
+                  </a>
+                </div>
+              </div>
             </>
-          ) : (
-            <div className="sm:text-lg text-xs">Login Now</div>
+          )
+        
+           : (
+            <div className="sm:text-lg text-xs"  onClick={Create}>Login Now</div>
           )}
         </div>
 
@@ -160,19 +204,11 @@ const Mmtheader = () => {
             </div>
           </div>
         </div>
-        {}
+      
         <div className=" flex-row hidden lg:flex">
           {loggedIn ? (
             <>
-              {/* <button
-                className="bg-white text-gray-800"
-                onClick={async () => {
-                  await supabase.auth.signOut();
-                  setLoggedIn(false);
-                }}
-              >
-                Sign Out
-              </button> */}
+              
               <div className="text-sm my-3 " onClick={dropdown}>
                 {name}
               </div>
@@ -248,7 +284,7 @@ const Mmtheader = () => {
       </div>
       {/* <Userprofile setLoggedIn={setLoggedIn} names={name} Emails={Email} /> */}
       <Signin
-        isvisible={showsign}
+         isvisible={showsign}
         setLoggedIn={setLoggedIn}
         setName={setName}
         onClose={() => {
@@ -275,7 +311,7 @@ const Mmtheader = () => {
                 <FaRegUserCircle className="text-2xl text-black" />
               </h1>
               {loggedIn ? (
-                <h2 className="text-gray-900  font-bold  ">{name}</h2>
+                <h2 className="text-gray-900  font-bold  "  onClick={UserProfile}>{name}</h2>
               ) : (
                 <h2 className="text-gray-900  font-bold cursor-pointer ">
                   Login now
