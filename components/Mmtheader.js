@@ -205,11 +205,11 @@ const Mmtheader = () => {
           </div>
         </div>
       
-        <div className=" flex-row hidden lg:flex">
+        <div className=" flex-row hidden lg:flex cursor-pointer">
           {loggedIn ? (
             <>
               
-              <div className="text-sm my-3 " onClick={dropdown}>
+              <div className="text-sm my-3 cursor-pointer " onClick={dropdown}>
                 {name}
               </div>
               <div
@@ -248,9 +248,9 @@ const Mmtheader = () => {
                     </a>
                   </li>
                 </ul>
-                <div class="py-1">
+                <div class="py-1 cursor-pointer">
                   <a
-                    class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
+                    class="block py-2 px-4 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
                     onClick={async () => {
                       await supabase.auth.signOut();
                       setLoggedIn(false);
