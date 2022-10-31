@@ -1,9 +1,10 @@
 import React from 'react'
-
-const boardingpass = () => {
+import { useRouter } from 'next/router'
+const boardingpass = ({name,age}) => {
+    const router=useRouter()
   return (
     <>
-      
+      {console.log(router.query.name + "6")}
 {/* <style>
 	.barcode {
 		left: 50%;
@@ -104,7 +105,7 @@ const boardingpass = () => {
 							<div class="flex items-center px-5 pt-3 text-sm">
 								<div class="flex flex-col">
 									<span class="">Passanger</span>
-									<div class="font-semibold">Ajimon</div>
+									<div class="font-semibold">{router.query.name}</div>
 
 								</div>
 								<div class="flex flex-col mx-auto">

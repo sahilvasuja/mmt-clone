@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import { supabase } from '../utils/supabase';
+
 const passenger = () => {
     const [firstname,setFirstName]=useState("");
     const [lastname,setLastName]=useState("");
@@ -37,7 +38,15 @@ const passenger = () => {
     {  firstname: firstname,lastname:lastname, email: mail, mobile:phone, age:age},
     console.log(data)
   )
-        // router.push("/boardingpass")
+         router.push({
+            pathname: '/boardingpass',
+            query:{
+                name: firstname+" " +lastname,
+                age: age
+                
+            }
+            
+         })
     }
     
   return (
