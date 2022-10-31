@@ -24,7 +24,7 @@ const flightdata = () => {
   
 
 )
-console.log(status,error);
+console.log(data);
 
     }
     
