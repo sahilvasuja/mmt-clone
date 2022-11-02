@@ -7,14 +7,24 @@ import { useRouter } from "next/router";
 const flightui = () => {
   const Router = useRouter();
   const [flightsearch, setFlightsearch] = useState(false);
-  const [journeyBeggin, setJourneyBeggin] = useState("delhi");
+  const [journeyBeggin, setJourneyBeggin] = useState("bengaluru");
   const Startjourney = (e) => {
     setJourneyBeggin(e.target.value);
   };
-  const passengerdetail = (e) => {
-    Router.push("/passenger");
-  };
-  const [journeyOver, setJourneyOver] = useState("bengaluru");
+  //   const passengerdetail = (e) => {
+  //     console.log(e.DepartureTime +"15")
+  //     Router.push(
+  //     {
+  //         pathname:"/passenger",
+  //         query:{
+  //             start: e.DepartureTime,
+  //             frm: e.from,
+
+  //         }
+  //     }
+  //         );
+  //   };
+  const [journeyOver, setJourneyOver] = useState("delhi");
   const Endjourney = (e) => {
     setJourneyOver(e.target.value);
   };
@@ -28,22 +38,30 @@ const flightui = () => {
   };
 
   const [array, setArray] = useState([]);
-
+  const [arr, setArr] = useState([]);
   // useEffect((e)=>{
   //     console.log(arr + "");
   // },[])
 
-  function handlesearch(e) {
+  async function handlesearch(e) {
     e.preventDefault();
 
     setFlightsearch(true);
-    fetchData();
+    const data = await fetchData();
+    setArray(data);
+    console.log(JSON.stringify(data) + "52");
+    Router.push({
+      pathname: "/bookingdetails",
+      query: {
+        data: JSON.stringify(data),
+        name: "asddf",
+      },
+    });
   }
 
   async function fetchData() {
     console.log(journeyOver);
     console.log(journeyBeggin);
-    // const { data: { user } } = await supabase.auth.getUser()
     const { data, error, status } = await supabase
       .from("flight")
       .select("*")
@@ -53,11 +71,10 @@ const flightui = () => {
     if (error && status !== 406) {
       throw error;
     }
-
+    return data;
     if (data) {
       console.log(data);
       setArray(data);
-      // console.log(JSON.stringify(arr) + "arr");
     }
   }
 
@@ -203,72 +220,79 @@ const flightui = () => {
           </div>
         </div>
 
-        {flightsearch ?
-          
-         array.map((e)=>{
-           
-            return(
-                <div className="bg-gray-200">
+        {flightsearch ? (
+          array.map((e) => {
+            return (
+              <div className="bg-gray-200">
                 <div class="p-10 shadow-lg ">
-                <div class="max-w-full  bg-white flex flex-col rounded overflow-hidden shadow-lg">
-                  <div class="flex flex-row items-baseline flex-nowrap bg-gray-100 p-2">
-                    <h1 class="ml-2 uppercase font-bold text-gray-500">
-                      departure
-                    </h1>
+                  <div class="max-w-full  bg-white flex flex-col rounded overflow-hidden shadow-lg">
+                    <div class="flex flex-row items-baseline flex-nowrap bg-gray-100 p-2">
+                      <h1 class="ml-2 uppercase font-bold text-gray-500">
+                        departure
+                      </h1>
 
-                    <p class="ml-2 font-normal text-gray-500">{e.Date}</p>
-                  </div>
-                  <div class="mt-2 flex justify-start bg-white p-2">
-                    <div class="flex mx-2 ml-6 h8 px-2 flex-row items-baseline rounded-full bg-gray-100 p-1">
-                      <p class="font-normal text-sm ml-1 text-gray-500">
-                        Economy
-                      </p>
+                      <p class="ml-2 font-normal text-gray-500">{e.Date}</p>
                     </div>
-                  </div>
-                  <div class=" flex sm:flex-row mx-6 sm:justify-between flex-wrap ">
-                    <div class="flex flex-row place-items-center p-2">
-                      <div class="flex flex-col ml-2">
-                        <p class="text-2xl text-gray-500 font-bold">{e.flightname}</p>
-                        <p class="text-xs text-gray-500">{e.flightnumber}</p>
-                        {/* <div class="text-xs text-gray-500">2*25kg</div> */}
+                    <div class="mt-2 flex justify-start bg-white p-2">
+                      <div class="flex mx-2 ml-6 h8 px-2 flex-row items-baseline rounded-full bg-gray-100 p-1">
+                        <p class="font-normal text-sm ml-1 text-gray-500">
+                          Economy
+                        </p>
                       </div>
                     </div>
-
-                    <div class="flex flex-col p-2">
-                      <p class="font-bold text-black">{e.DepartureTime}</p>
-                      <p class="text-gray-500 font-bold">{e.From}</p>
-                      {/* <p class="text-gray-500">{` ${journeyBeggin.substring(0,3)} ${journeyBeggin} International AIRPORT`}</p> */}
-                    </div>
-                    <div class="flex flex-col p-2">
-                      <p class=" text-gray-400">{e.requiredtime}</p>
-                      <p className="text-yellow-400 font-bold">----------</p>
-                      <p className="text-gray-400">{e.flighttype}</p>
-                    </div>
-                    <div class="flex flex-col flex-wrap p-2">
-                      <p class="font-bold text-black">{e.ArrivalTime}</p>
-                      <p class="text-gray-500 font-bold">{e.To}</p>
-                      {/* <p class="text-gray-500">{` ${journeyOver.substring(0,3)} ${journeyOver} International AIRPORT...`}</p> */}
-                    </div>
-                    <div class="md:border-l-2 mx-6 md:border-dotted flex flex-row py-4 mr-6 flex-wrap">
-                      <div class="text-sm mx-2 flex flex-col text-gray-400">
-                        <p>Price</p>
-                        <p class="font-bold">{e.Price}</p>
-                        <p class="text-xs text-gray-500">Price per adult</p>
+                    <div class=" flex sm:flex-row mx-6 sm:justify-between flex-wrap ">
+                      <div class="flex flex-row place-items-center p-2">
+                        <div class="flex flex-col ml-2">
+                          <p class="text-2xl text-gray-500 font-bold">
+                            {e.flightname}
+                          </p>
+                          <p class="text-xs text-gray-500">{e.flightnumber}</p>
+                          {/* <div class="text-xs text-gray-500">2*25kg</div> */}
+                        </div>
                       </div>
-                      <button
-                        class="w-32 h-11 rounded flex border-solid border text-white bg-green-800 mx-2 justify-center place-items-center"
-                        onClick={passengerdetail}
-                      >
-                        Book
-                      </button>
+
+                      <div class="flex flex-col p-2">
+                        <p class="font-bold text-black">{e.DepartureTime}</p>
+                        <p class="text-gray-500 font-bold">{e.From}</p>
+                        {/* <p class="text-gray-500">{` ${journeyBeggin.substring(0,3)} ${journeyBeggin} International AIRPORT`}</p> */}
+                      </div>
+                      <div class="flex flex-col p-2">
+                        <p class=" text-gray-400">{e.timerequired}</p>
+                        <p className="text-yellow-400 font-bold">----------</p>
+                        <p className="text-gray-400">{e.flighttype}</p>
+                      </div>
+                      <div class="flex flex-col flex-wrap p-2">
+                        <p class="font-bold text-black">{e.ArrivalTime}</p>
+                        <p class="text-gray-500 font-bold">{e.To}</p>
+                        {/* <p class="text-gray-500">{` ${journeyOver.substring(0,3)} ${journeyOver} International AIRPORT...`}</p> */}
+                      </div>
+                      <div class="md:border-l-2 mx-6 md:border-dotted flex flex-row py-4 mr-6 flex-wrap">
+                        <div class="text-sm mx-2 flex flex-col text-gray-400">
+                          <p>Price</p>
+                          <p class="font-bold">{e.Price}</p>
+                          <p class="text-xs text-gray-500">Price per adult</p>
+                        </div>
+                        <button
+                          class="w-32 h-11 rounded flex border-solid border text-white bg-green-800 mx-2 justify-center place-items-center"
+                          // onClick={passengerdetail}
+                          onClick={() => {
+                            Router.push({
+                              pathname: `/flight/${id}`,
+                            });
+                          }}
+                        >
+                          Book
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              </div>
-            )
-            
-        }) : <div></div>}
+            );
+          })
+        ) : (
+          <div></div>
+        )}
       </div>
     </>
   );

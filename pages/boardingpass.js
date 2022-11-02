@@ -5,16 +5,8 @@ const boardingpass = ({ name, age }) => {
   return (
     <>
       {console.log(router.query.name + "6")}
-      {/* <style>
-	.barcode {
-		left: 50%;
-		box-shadow: 1px 0 0 1px, 5px 0 0 1px, 10px 0 0 1px, 11px 0 0 1px, 15px 0 0 1px, 18px 0 0 1px, 22px 0 0 1px, 23px 0 0 1px, 26px 0 0 1px, 30px 0 0 1px, 35px 0 0 1px, 37px 0 0 1px, 41px 0 0 1px, 44px 0 0 1px, 47px 0 0 1px, 51px 0 0 1px, 56px 0 0 1px, 59px 0 0 1px, 64px 0 0 1px, 68px 0 0 1px, 72px 0 0 1px, 74px 0 0 1px, 77px 0 0 1px, 81px 0 0 1px, 85px 0 0 1px, 88px 0 0 1px, 92px 0 0 1px, 95px 0 0 1px, 96px 0 0 1px, 97px 0 0 1px, 101px 0 0 1px, 105px 0 0 1px, 109px 0 0 1px, 110px 0 0 1px, 113px 0 0 1px, 116px 0 0 1px, 120px 0 0 1px, 123px 0 0 1px, 127px 0 0 1px, 130px 0 0 1px, 131px 0 0 1px, 134px 0 0 1px, 135px 0 0 1px, 138px 0 0 1px, 141px 0 0 1px, 144px 0 0 1px, 147px 0 0 1px, 148px 0 0 1px, 151px 0 0 1px, 155px 0 0 1px, 158px 0 0 1px, 162px 0 0 1px, 165px 0 0 1px, 168px 0 0 1px, 173px 0 0 1px, 176px 0 0 1px, 177px 0 0 1px, 180px 0 0 1px;
-		display: inline-block;
-		transform: translateX(-90px);
-	}
-</style> */}
+
       <div class="flex flex-col items-center justify-center min-h-screen bg-center bg-cover">
-        {/* style="background-image: url(https://images.unsplash.com/photo-1519666336592-e225a99dcd2f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1888&q=80);"> */}
         <div class="absolute bg-blue-900 opacity-80 inset-0 z-0"></div>
         <div class="max-w-md w-full h-full mx-auto z-10 bg-blue-900 rounded-3xl">
           <div class="flex flex-col">
@@ -74,7 +66,6 @@ const boardingpass = ({ name, age }) => {
                     <div class="flex flex-col ">
                       <div class="flex-auto text-xs text-gray-400 my-1">
                         <span class="mr-1">8 nov 22</span>
-                       
                       </div>
                       <div class="w-full flex-none text-lg text-blue-800 font-bold leading-none">
                         Bengaluru
