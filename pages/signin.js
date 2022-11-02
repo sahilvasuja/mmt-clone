@@ -19,11 +19,6 @@ const Signin = () => {
       password: pass,
     });
     console.log(session + "session");
-    // const { data: { user: newuser } }=await supabase.auth.getUser()
-    // console.log(newuser +" hello");
-    //
-    // console.log(user,error,mail,pass);
-    // error? console.log(error) : console.log(user);
     if (error) {
       alert(JSON.stringify(error));
     } else {
