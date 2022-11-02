@@ -1,9 +1,4 @@
 import { useState, useEffect } from "react";
-// import {
-//   useSession,
-//   useSupabaseClient,
-//   useUser,
-// } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/router";
 import { withPageAuth } from "@supabase/supabase-auth-helpers/nextjs";
 

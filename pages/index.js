@@ -7,7 +7,7 @@ const index = () => {
   return (
     <>
       <Mmtheader />
-     
+
       <Nav />
 
       <Card />
