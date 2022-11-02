@@ -2,8 +2,6 @@ import React from "react";
 
 const Download = () => {
   return (
-    
-
     <div class="p-4 w-full text-center bg-white rounded-lg border  sm:p-8 dark:bg-white dark:border-white   ">
       <h5 class="mb-2 text-3xl font-bold text-gray-800 dark:text-gray-800">
         Download App Now !

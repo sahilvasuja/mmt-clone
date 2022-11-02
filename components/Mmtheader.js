@@ -51,21 +51,16 @@ const Mmtheader = () => {
     setDrop(!drop);
   };
 
-
-  
   const UserProfile = async (e) => {
     e.preventDefault();
     //router.push("/check");
     router.push({
-      pathname: '/check',
-      query: { name: name,
-              email: Email,
-              LoggedIn: loggedIn,
-     }
-  });
+      pathname: "/check",
+      query: { name: name, email: Email, LoggedIn: loggedIn },
+    });
   };
   const Create = async (e) => {
-     setshowsign(true);
+    setshowsign(true);
     console.log("create");
     //  router.push("/createaccount");
   };
@@ -108,16 +103,15 @@ const Mmtheader = () => {
           </span>
           trip
         </div>
-        <div
-          className="bg-blue-300 sm:px-3 sm:py-3 justify-evenly mx-5 h-8 sm:h-10 w-28 text-center items-center    sm:w-36 flex rounded-full lg:hidden "
-         
-        >
+        <div className="bg-blue-300 sm:px-3 sm:py-3 justify-evenly mx-5 h-8 sm:h-10 w-28 text-center items-center    sm:w-36 flex rounded-full lg:hidden ">
           <div>
             <FaUserCircle className=" sm:text-2xl text:lg" />
           </div>
           {loggedIn ? (
             <>
-              <div className="sm:text-lg text-xs" onClick={dropdown}>{name}</div>
+              <div className="sm:text-lg text-xs" onClick={dropdown}>
+                {name}
+              </div>
               <div
                 id="dropdownNavbar"
                 class={` z-10 w-32 bg-white rounded divide-y mt-11 divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 ${
@@ -167,10 +161,10 @@ const Mmtheader = () => {
                 </div>
               </div>
             </>
-          )
-        
-           : (
-            <div className="sm:text-lg text-xs"  onClick={Create}>Login Now</div>
+          ) : (
+            <div className="sm:text-lg text-xs" onClick={Create}>
+              Login Now
+            </div>
           )}
         </div>
 
@@ -204,11 +198,10 @@ const Mmtheader = () => {
             </div>
           </div>
         </div>
-      
+
         <div className=" flex-row hidden lg:flex cursor-pointer">
           {loggedIn ? (
             <>
-              
               <div className="text-sm my-3 cursor-pointer " onClick={dropdown}>
                 {name}
               </div>
@@ -284,7 +277,7 @@ const Mmtheader = () => {
       </div>
       {/* <Userprofile setLoggedIn={setLoggedIn} names={name} Emails={Email} /> */}
       <Signin
-         isvisible={showsign}
+        isvisible={showsign}
         setLoggedIn={setLoggedIn}
         setName={setName}
         onClose={() => {
@@ -311,7 +304,12 @@ const Mmtheader = () => {
                 <FaRegUserCircle className="text-2xl text-black" />
               </h1>
               {loggedIn ? (
-                <h2 className="text-gray-900  font-bold  "  onClick={UserProfile}>{name}</h2>
+                <h2
+                  className="text-gray-900  font-bold  "
+                  onClick={UserProfile}
+                >
+                  {name}
+                </h2>
               ) : (
                 <h2 className="text-gray-900  font-bold cursor-pointer ">
                   Login now

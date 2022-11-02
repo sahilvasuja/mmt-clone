@@ -78,7 +78,11 @@ const Menumobile = () => {
         <div className="flex flex-row w-11/12 bg-white shadow-2xl h-24 mx-7 -my-2 rounded-2xl text-center justify-evenly ">
           {menu.map((item) => {
             return (
-              <Menumobileicons label={item.name} Icon={item.icon} text={item.text} />
+              <Menumobileicons
+                label={item.name}
+                Icon={item.icon}
+                text={item.text}
+              />
             );
           })}
         </div>

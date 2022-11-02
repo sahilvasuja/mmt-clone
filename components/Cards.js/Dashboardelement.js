@@ -23,7 +23,7 @@ const Dashboardelement = () => {
       text: "pl-1",
       label: "text-2xl text-black",
     },
-   
+
     {
       names: "My Wallet",
       icons: FaWallet,
@@ -47,7 +47,6 @@ const Dashboardelement = () => {
       icons: FaFighterJet,
       text: "pr-6",
       label: "text-2xl text-sky-400",
-      
     },
 
     {
@@ -66,7 +65,7 @@ const Dashboardelement = () => {
     {
       names: "Holiday Packages",
       icons: FaUmbrellaBeach,
-      
+
       label: "text-2xl text-green-500",
     },
   ];

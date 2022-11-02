@@ -1,6 +1,4 @@
-
 const Menumobileicons = ({ label, Icon, text }) => {
- 
   return (
     <>
       <div className="flex flex-col gap-3 justify-center items-center -mt-9 flex-1">
@@ -9,8 +7,6 @@ const Menumobileicons = ({ label, Icon, text }) => {
         />
         <p className="text-black sm:text-lg text-sm font-medium"> {label}</p>
       </div>
-
-     
     </>
   );
 };

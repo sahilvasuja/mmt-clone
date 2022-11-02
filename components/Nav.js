@@ -6,16 +6,15 @@ import { useRouter } from "next/router";
 import Triptype from "./Cards.js/Triptype";
 import Menutype from "./Cards.js/Menutype";
 import signup from "../pages/signup";
-// className="w-screen h-full bg-sky-900  p-40 px-14  lg:block  hidden "
 const Nav = () => {
-  const router=useRouter();
-  const flight=async(e)=>{
-      e.preventDefault();
-      router.push("/flightui")
-  }
+  const router = useRouter();
+  const flight = async (e) => {
+    e.preventDefault();
+    router.push("/flightui");
+  };
   return (
-    <>  
-          <div className="w-screen h-full bg-sky-900  p-40 px-14  lg:block  hidden ">
+    <>
+      <div className="w-screen h-full bg-sky-900  p-40 px-14  lg:block  hidden ">
         <div className="bg-white w-max-content h-8/12 px-14 relative py-8 -my-14  text-gray-400 rounded-xl lg:block hidden ">
           <div className=" bg-white z-20 shadow-xl w-11/12  my-36  -top-48 h-24 absolute text-gray-400   rounded-xl ">
             <div className="flex flex-row justify-evenly mt-5">
@@ -68,14 +67,13 @@ const Nav = () => {
 
           <div className="flex justify-between">
             <div className=" mt-8  flex flex-row px-3 ">
-              <Triptype /> 
-              
+              <Triptype />
             </div>
             <div className="mt-8 text-black">
               Book International and Domestic Flights
             </div>
           </div>
-          
+
           <div className="my-8">
             <Menuflight />
           </div>
@@ -83,7 +81,6 @@ const Nav = () => {
             <div className=" bg-white ">Select A Fare Type:</div>
           </div>
           <div className="flex flex-row justify-start items-center  ">
-          
             <Faretype />
 
             <div className="flex flex-row my-1 lg:ml-8 xl:ml-32 2xl:ml-80">

@@ -3,14 +3,14 @@ import { supabase } from "../utils/supabase";
 import { useState, useEffect } from "react";
 import Signin from "./signin";
 import { useSession } from "@supabase/auth-helpers-react";
-export default function Profile({email,name}) {
-   const [phone, setPhone] = useState("8766111117");
- const [phoneplus, setphoneplus] = useState(false);
- const [gender,setGender]=useState("Male");
- const [bday,setBday]=useState("12 sep 2000")
+export default function Profile({ email, name }) {
+  const [phone, setPhone] = useState("8766111117");
+  const [phoneplus, setphoneplus] = useState(false);
+  const [gender, setGender] = useState("Male");
+  const [bday, setBday] = useState("12 sep 2000");
   const [edit, setEdit] = useState(false);
-  const [loading,setLoading]=useState(false)
-  const session=useSession();
+  const [loading, setLoading] = useState(false);
+  const session = useSession();
   useEffect(() => {
     getProfile();
   }, [session]);
@@ -18,20 +18,20 @@ export default function Profile({email,name}) {
   function Edit() {
     setEdit(!edit);
   }
-  async function Gender(e){
+  async function Gender(e) {
     // edit(!edit);
     e.preventDefault();
-     setGender(e.target.value)
+    setGender(e.target.value);
   }
-  async function Bday(e){
+  async function Bday(e) {
     // edit(!edit);
     e.preventDefault();
-     setBday(e.target.value)
+    setBday(e.target.value);
   }
-  async function Phone(e){
+  async function Phone(e) {
     // edit(!edit);
     e.preventDefault();
-     setPhone(e.target.value)
+    setPhone(e.target.value);
   }
   async function getCurrentUser() {
     const {
@@ -69,35 +69,10 @@ export default function Profile({email,name}) {
         setemail(data.useremail);
       }
     } catch (error) {
-    //   alert(error.message + "53");
     } finally {
       setLoading(false);
     }
   }
-
-//   async function updateProfile({ username, website, avatar_url }) {
-//     try {
-//       setLoading(true);
-     
-//       const updates = {
-//         id: user.id,
-//         username,
-//         website,
-//         avatar_url,
-//         updated_at: new Date(),
-//       };
-
-//       let { error } = await supabase.from("profiles").upsert(updates);
-
-//       if (error) {
-//         throw error;
-//       }
-//     } catch (error) {
-//       alert(error.message + "78");
-//     } finally {
-//       setLoading(false);
-//     }
-//   }
 
   return (
     <>
@@ -109,7 +84,6 @@ export default function Profile({email,name}) {
                 <div class="image overflow-hidden">
                   <img
                     class="h-auto w-full mx-auto"
-                    // src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
                     src="https://lavinephotography.com.au/wp-content/uploads/2022/09/Fam_Kids024-1.jpg"
                     alt=""
                   />
@@ -126,17 +100,6 @@ export default function Profile({email,name}) {
                   <li class=" text-center items-center py-3">
                     Save Travellers{" "}
                   </li>
-                  {/* <li
-                    class="text-center items-center  py-3"
-                    onClick={() => supabase.auth.signOut()
-                        
-                        }
-                     
-
-                  >
-                 
-                    Logout
-                  </li> */}
                 </ul>
               </div>
             </div>
@@ -171,32 +134,40 @@ export default function Profile({email,name}) {
                       <div class="px-4 py-2 font-semibold">Name</div>
                       <div class="px-4 py-2 bg-white">{name}</div>
                     </div>
-                    
+
                     <div class="grid grid-cols-2">
                       <div class="px-4 py-2 font-semibold">Gender</div>
-                      {!edit ? ( <input
-                        class="px-4 py-2 bg-white"
-                        value={gender} onChange={Gender}
-                        disabled
-                      />
+                      {!edit ? (
+                        <input
+                          class="px-4 py-2 bg-white"
+                          value={gender}
+                          onChange={Gender}
+                          disabled
+                        />
                       ) : (
                         <input
-                        class="px-4 py-2 bg-white"
-                        value={gender}  onChange={Gender} />
-                        
-                      )
-                      }
+                          class="px-4 py-2 bg-white"
+                          value={gender}
+                          onChange={Gender}
+                        />
+                      )}
                     </div>
                     <div class="grid grid-cols-2">
                       <div class="px-4 py-2 font-semibold">Contact No.</div>
                       {!edit ? (
-                      <input class="px-4 py-2 bg-white" value={phone} onChange={Phone} disabled/>
+                        <input
+                          class="px-4 py-2 bg-white"
+                          value={phone}
+                          onChange={Phone}
+                          disabled
+                        />
                       ) : (
-                        <input class="px-4 py-2 bg-white" value={phone} onChange={Phone} />
-                      )
-                      }
-                     
-                       
+                        <input
+                          class="px-4 py-2 bg-white"
+                          value={phone}
+                          onChange={Phone}
+                        />
+                      )}
                     </div>
 
                     <div class="grid grid-cols-2">
@@ -204,7 +175,6 @@ export default function Profile({email,name}) {
                       <div class="px-4 py-2">
                         <div
                           class="text-blue-800 outline-none bg-white"
-                          
                           disabled
                         >
                           {email}
@@ -216,13 +186,15 @@ export default function Profile({email,name}) {
                       {!edit ? (
                         <input
                           class="px-4 py-2 bg-white"
-                          value={bday} onChange={Bday}
+                          value={bday}
+                          onChange={Bday}
                           disabled
                         />
                       ) : (
                         <input
                           class="px-4 py-2 bg-white"
-                          value={bday} onChange={Bday}
+                          value={bday}
+                          onChange={Bday}
                         />
                       )}
                     </div>

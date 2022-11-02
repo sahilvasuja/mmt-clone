@@ -9,20 +9,21 @@ const Offers = ({ name, title }) => {
       {/* <div className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg bg-hero-pattern">
         {" "}
       </div> */}
-      <img class="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="https://flowbite.com/docs/images/blog/image-4.jpg" alt=""></img>
+      <img
+        class="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+        src="https://flowbite.com/docs/images/blog/image-4.jpg"
+        alt=""
+      ></img>
       <div class="flex flex-col justify-between p-4 leading-normal overflow-hidden">
         <h5 class="mb-1  xl:text-2xl font-bold tracking-tight text-gray-900 dark:text-white ">
           {name}
         </h5>
-        <p class="mb-2 font-normal  xl:text-lg text-gray-700 dark:text-gray-400 ">{title}</p>
+        <p class="mb-2 font-normal  xl:text-lg text-gray-700 dark:text-gray-400 ">
+          {title}
+        </p>
       </div>
     </a>
   );
 };
 
 export default Offers;
-
-
-
-
-

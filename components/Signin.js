@@ -148,9 +148,7 @@ const Signin = ({ isvisible, setLoggedIn, setName, onClose }) => {
           </form>
         </div>
       </div>
-      <Userprofile
-      mails={mail}
-     />
+      <Userprofile mails={mail} />
     </>
   );
 };
