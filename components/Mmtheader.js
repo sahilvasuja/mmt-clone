@@ -322,6 +322,75 @@ const Mmtheader = () => {
       )}
 
       <Menumobile />
+      <div
+        className={`${
+          open ? "bg-white w-4/12" : "hidden"
+        } bg-slate-100 flex flex-col w-1/3 h-screen md:hidden curser:pointer xxs:11/12 sm:w-2/3 `}
+      >
+        <div className="flex flex-row h-14 border-solid border-2 text-center pt-3">
+          <h1 className="pl-4">
+            <FaRegUserCircle className="text-2xl text-black" />
+          </h1>
+          <h2 className="text-gray-900 pl-6 font-bold ">Login/Sign-up now</h2>
+        </div>
+        <div className="flex flex-row h-14 border-solid border-2 text-center pt-3">
+          <h1 className="pl-4 my-1">
+            <FaToolbox className="text-2xl text-black" />
+          </h1>
+          <h2 className="text-gray-900 pl-6 font-bold">View/Manage Trips</h2>
+        </div>
+        <div className="flex flex-row h-14 border-solid border-2 text-center pt-3">
+          <h1 className="pl-4">🎁</h1>
+          <h2 className="text-gray-900 pl-6 font-bold">Gift Cards</h2>
+        </div>
+        <div className="flex flex-row h-14 border-solid border-2 text-center pt-3">
+          <h1 className="pl-4">
+            <FaWallet className="text-2xl text-black" />
+          </h1>
+          <h2 className="text-gray-900 pl-6 font-bold">My Wallet</h2>
+        </div>
+        <div className="flex flex-row h-14 border-solid border-2 text-center pt-3">
+          <h1 className="pl-4">
+            <FaRegSun className="text-2xl text-black" />
+          </h1>
+          <h2 className="text-gray-900 pl-6 font-bold">Settings</h2>
+        </div>
+        <div className="flex flex-row h-14 border-solid border-2 text-center pt-3">
+          <h1 className="pl-4">
+            <FaDharmachakra className="text-2xl text-black" />
+          </h1>
+          <h2 className="text-gray-900 pl-6 font-bold">Travel Offers</h2>
+        </div>
+        <div className="flex flex-row h-14 border-solid border-2 text-center pt-3 ">
+          <h1 className="pl-4">
+            <FaFighterJet className="item-black text-black text-2xl" />
+          </h1>
+          <h2 className="text-gray-900 pl-6 font-bold ">Flights</h2>
+        </div>
+        <div className="flex flex-row h-14 border-solid border-2 text-center pt-3">
+          <h1 className="pl-4">
+            <FaHotel className="text-pink-700 text-2xl" />{" "}
+          </h1>
+          <h2 className="text-gray-900 pl-6 font-bold">Hotels</h2>
+        </div>
+        <div className="flex flex-row h-14 border-solid border-2 text-center pt-3">
+          <h1 className="pl-4">
+            <FaTrain className="text-2xl text-orange-400" />
+          </h1>
+          <h2 className="text-gray-900 pl-6 font-bold">Trains</h2>
+        </div>
+        <div className="flex flex-row h-14 border-solid border-2 text-center pt-3">
+          <h1 className="pl-4">
+            <FaUmbrellaBeach className="text-2xl text-black my-1" />
+          </h1>
+          <h2 className="text-gray-900 pl-6 font-bold">Holiday Packages</h2>
+        </div>
+        <div className="flex flex-col my-5 h-36 mx-5 justify-evenly">
+          <h3 className="text-blue-600">User Agreement</h3>
+          <h3 className="text-blue-600">Privacy Policy</h3>
+          <h3 className="text-blue-600">Terms of Service</h3>
+        </div>
+      </div>
     </>
   );
 };
