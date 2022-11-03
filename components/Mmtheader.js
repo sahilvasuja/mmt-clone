@@ -163,62 +163,6 @@ const Mmtheader = () => {
           <h3 className="text-blue-600">Terms of Service</h3>
         </div>
       </div>
-      {/* </div> */}
-      {/* <button className="" onClick={dashboard}>⏪</button> */}
-      {/* <div className="   flex-col bg-sky-900 justify-around  h-24"  >
-           
-            <div className="text-2xl w-48 " onClick={make}>make <span className="bg-red-800  text-3xl rounded-xl "  >my</span> trip</div>
-            
-            <div className="flex flex-row  mx-56">
-                <div className=" border-light outline-none flex w-56 justify-evenly">
-                    <h1 className="w-5">📀</h1>
-                    <div className="flex flex-col ">
-                        <div className="text-lg font-bold">Super Offers</div>
-                        <div className="text-sm">
-                        Explore great deals & offers
-                        </div>  
-                    </div>
-                </div>
-                <div className="  flex w-56 justify-evenly">
-                    <h1 className="w-3">👜</h1>
-                    <div className="flex flex-col">
-                        <div className="text-lg font-bold">Introducing myBiz
-                        </div>
-                        <div className="text-sm">
-                        Business Travel Solution
-                        </div>  
-                    </div>
-                </div>
-                <div className=" flex w-56 justify-evenly">
-                    <h1 className="w-3">💼</h1>
-                    <div className="flex flex-col">
-                        <div className="text-lg font-bold">My Trips</div>
-                        <div className="text-sm">
-                        Manage your bookings
-                        </div>  
-                    </div>
-                </div>
-                <div className=" flex w-72 justify-evenly bg-blue-500 rounded-lg py-1">
-                    <h1 className="rounded-2xl my-1 w-10 h-7 bg-white text-black text-center">my</h1>
-                    
-                        <div className="text-sm my-2" onClick={Create}> Login or Create Account</div>
-                    <div className="text-xl ">
-                       v
-                        </div>
-                </div>
-                <div className=" flex w-56 mx-4 justify-evenly bg-slate-700 ">
-                    
-                        <div className="text-lg py-3 " onClick={langauge}>🇮🇳  IN | ENG | INR</div>
-                    <div className="text-xl py-2">
-                       v
-                        </div>
-                </div>
-                
-                
-                
-               
-            </div>
-        </div> */}
     </>
   );
 };

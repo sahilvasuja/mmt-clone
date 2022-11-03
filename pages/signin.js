@@ -19,7 +19,6 @@ const Signin = () => {
       password: pass,
     });
     console.log(session + "session");
-
     if (error) {
       alert(JSON.stringify(error));
     } else {
