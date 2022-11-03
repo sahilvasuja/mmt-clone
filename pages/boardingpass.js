@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-const boardingpass = ({ name, age }) => {
+const boardingpass = ({ name, age,Date,flightnumber,flightname,to,from }) => {
   const router = useRouter();
   return (
     <>
@@ -41,9 +41,9 @@ const boardingpass = ({ name, age }) => {
                           class="h-8 p-1"
                         />
                       </span>
-                      <h2 class="font-medium">Airindia</h2>
+                      <h2 class="font-medium">{flightname}</h2>
                     </div>
-                    <div class="ml-auto text-blue-800">A380</div>
+                    <div class="ml-auto text-blue-800">{flightnumber}</div>
                   </div>
                   <div class=" border-dashed border-b-2 my-5"></div>
                   <div class="flex items-center">
@@ -53,7 +53,7 @@ const boardingpass = ({ name, age }) => {
                         <span>8 nov 22</span>
                       </div>
                       <div class="w-full flex-none text-lg text-blue-800 font-bold leading-none">
-                        Delhi
+                        {from}
                       </div>
                       <div class="text-xs">India</div>
                     </div>
@@ -68,7 +68,7 @@ const boardingpass = ({ name, age }) => {
                         <span class="mr-1">8 nov 22</span>
                       </div>
                       <div class="w-full flex-none text-lg text-blue-800 font-bold leading-none">
-                        Bengaluru
+                        {to}
                       </div>
                       <div class="text-xs">India</div>
                     </div>
