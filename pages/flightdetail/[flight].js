@@ -10,15 +10,18 @@ const flight = () => {
   }, []);
   const Router = useRouter();
   let flightid = Router.query.flight;
-  async function showboardingpass(){
+  console.log(flightid , "13")
+  async function showboardingpass(e){
+    e.preventDefault()
     console.log("continue")
     console.log(arr.from)
+    console.log(flightid , "13")
     Router.push({
         pathname: "/boardingpass",
        
         query: {
           name: "sahil",
-          age: "22",
+          age: flightid,
           Date: arr.Date,
           flightname: arr.flightname,
           flightnumber: arr.flightnumber,
