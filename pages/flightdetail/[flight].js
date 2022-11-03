@@ -5,6 +5,7 @@ import Passenger from "../../components/Passengers";
 import {FaSuitcaseRolling,FaShoppingBag,FaChevronRight,FaRupeeSign,FaCreativeCommonsBy,FaArrowLeft} from "react-icons/fa";
 const flight = () => {
   const [arr, setArr] = useState([]);
+
   useEffect(() => {
     flightshow();
   }, []);
