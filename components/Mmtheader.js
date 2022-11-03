@@ -361,7 +361,7 @@ const Mmtheader = () => {
           </h1>
           <h2 className="text-gray-900 pl-6 font-bold">Travel Offers</h2>
         </div>
-        <div className="flex flex-row h-14 border-solid border-2 text-center pt-3 ">
+        <div className="flex flex-row h-14 border-solid border-2 text-center pt-3 " onClick={()=>router.push("/flightui")}>
           <h1 className="pl-4">
             <FaFighterJet className="item-black text-black text-2xl" />
           </h1>

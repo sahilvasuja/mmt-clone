@@ -75,7 +75,7 @@ const Menumobile = () => {
   return (
     <>
       <div className="bg-white flex flex-col lg:hidden w-full   text-2xl text-black">
-        <div className="flex flex-row w-11/12 bg-white shadow-2xl h-24 mx-7 -my-2 rounded-2xl text-center justify-evenly ">
+        <div className="flex flex-row w-11/12 bg-white shadow-2xl h-24 mx-7 -my-2 rounded-2xl cursor-pointer  text-center justify-evenly ">
           {menu.map((item) => {
             return (
               <Menumobileicons
@@ -87,14 +87,14 @@ const Menumobile = () => {
           })}
         </div>
 
-        <div className=" bg-white lg:hidden w-11/12 h-48 mx-7 my-11 rounded-2xl  shadow-2xl inline-grid  grid-cols-4 justify-evenly text-center  items-center">
+        <div className=" bg-white lg:hidden w-11/12 h-48 mx-7 my-11 rounded-2xl cursor-pointer shadow-2xl inline-grid  grid-cols-4 justify-evenly text-center  items-center">
           {/*           
         {
             data1.map((arr)=>{
                 return <Icons label1={arr.name1} Font={arr.f}/>
             })
           } */}
-          <div className="flex flex-col justify-around items-center">
+          <div className="flex flex-col justify-around cursor-pointer items-center">
             <div className="text-sky-400">
               <FaCar className="" />
             </div>
