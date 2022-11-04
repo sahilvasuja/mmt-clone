@@ -91,12 +91,12 @@ const Mmtheader = () => {
     <>
       <div className="flex flex-row bg-sky-900 justify-between py-8 xxs:justify-between lg:py-2 ">
         <div
-          className="my-4 mx-5 icon-3x sm:text-2xl text:lg lg:hidden"
+          className="my-4 mx-5 icon-3x sm:text-2xl text:lg cursor-pointer lg:hidden"
           onClick={bar}
         >
           {!open ? <FaAlignJustify /> : <FaTimes />}{" "}
         </div>
-        <div className="text-xl sm:text-4xl px-4 lg:text-lg xl:text-2xl">
+        <div className="text-xl sm:text-4xl px-4 cursor-pointer lg:text-lg xl:text-2xl">
           make
           <span className="bg-red-800 p-1  sm:py-1 sm:px-2 mx-1  text-lg sm:text-4xl rounded-full lg:text-lg lg:px-1 lg:py-1 xl:text-2xl xl:px-1 xl:mx-1">
             my
@@ -162,9 +162,9 @@ const Mmtheader = () => {
               </div>
             </>
           ) : (
-            <div className="sm:text-lg text-xs" onClick={Create}>
+            <div className="sm:text-lg text-xs cursor-pointer " onClick={Create}>
               Login Now
-            </div>
+            </div> 
           )}
         </div>
 
