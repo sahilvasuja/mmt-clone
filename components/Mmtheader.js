@@ -322,7 +322,7 @@ const Mmtheader = () => {
       )}
 
       <Menumobile />
-      <div
+      {/* <div
         className={`${
           open ? "bg-white w-4/12" : "hidden"
         } bg-slate-100 flex flex-col w-1/3 h-screen md:hidden curser:pointer xxs:11/12 sm:w-2/3 `}
@@ -390,7 +390,7 @@ const Mmtheader = () => {
           <h3 className="text-blue-600">Privacy Policy</h3>
           <h3 className="text-blue-600">Terms of Service</h3>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
