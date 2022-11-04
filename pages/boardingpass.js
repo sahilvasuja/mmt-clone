@@ -41,19 +41,19 @@ const boardingpass = ({ name, age,Date,flightnumber,flightname,to,from }) => {
                           class="h-8 p-1"
                         />
                       </span>
-                      <h2 class="font-medium">{flightname}</h2>
+                      <h2 class="font-medium">{router.query.flightname}</h2>
                     </div>
-                    <div class="ml-auto text-blue-800">{flightnumber}</div>
+                    <div class="ml-auto text-blue-800">{router.query.flightnumber}</div>
                   </div>
                   <div class=" border-dashed border-b-2 my-5"></div>
                   <div class="flex items-center">
                     <div class="flex flex-col">
                       <div class="flex-auto text-xs text-gray-400 my-1">
                         {/* <span class="mr-1 ">MO</span> */}
-                        <span>8 nov 22</span>
+                        <span>{router.query.Date}</span>
                       </div>
                       <div class="w-full flex-none text-lg text-blue-800 font-bold leading-none">
-                        {from}
+                        {router.query.from}
                       </div>
                       <div class="text-xs">India</div>
                     </div>
@@ -65,10 +65,10 @@ const boardingpass = ({ name, age,Date,flightnumber,flightname,to,from }) => {
                     </div>
                     <div class="flex flex-col ">
                       <div class="flex-auto text-xs text-gray-400 my-1">
-                        <span class="mr-1">8 nov 22</span>
+                        <span class="mr-1">{router.query.Date}</span>
                       </div>
                       <div class="w-full flex-none text-lg text-blue-800 font-bold leading-none">
-                        {to}
+                        {router.query.to}
                       </div>
                       <div class="text-xs">India</div>
                     </div>
@@ -80,7 +80,7 @@ const boardingpass = ({ name, age,Date,flightnumber,flightname,to,from }) => {
                   <div class="flex items-center mb-5 p-5 text-sm">
                     <div class="flex flex-col">
                       <span class="text-sm">Flight</span>
-                      <div class="font-semibold">Airbus380</div>
+                      <div class="font-semibold">{` ${router.query.flightname} ${router.query.flightnumber}`}</div>
                     </div>
                     <div class="flex flex-col ml-auto">
                       <span class="text-sm">Gate</span>
@@ -94,11 +94,11 @@ const boardingpass = ({ name, age,Date,flightnumber,flightname,to,from }) => {
                     </div>
                     <div class="flex flex-col mx-auto text-sm">
                       <span class="">Departs</span>
-                      <div class="font-semibold">11:30Am</div>
+                      <div class="font-semibold">{router.query.depart}</div>
                     </div>
                     <div class="flex flex-col text-sm">
                       <span class="">Arrived</span>
-                      <div class="font-semibold">2:00PM</div>
+                      <div class="font-semibold">{router.query.arrival}</div>
                     </div>
                   </div>
                   <div class=" border-dashed border-b-2 my-5 pt-5">
