@@ -27,11 +27,8 @@ const Menuflight = () => {
           onChange={Startjourney}
         ></input>
         <input
-          className="text-lg bg-white"
-          value={` ${journeyBeggin.substring(
-            0,
-            3
-          )} ${journeyBeggin} International AIRPORT`}
+          className="text-sm bg-white"
+          value={`${journeyBeggin} International AIRPORT`}
         ></input>
       </div>
       <div className="border border-black w-1/4 h-36 flex flex-col text-black p-2">
@@ -42,11 +39,8 @@ const Menuflight = () => {
           onChange={Endjourney}
         ></input>
         <input
-          className="text-lg bg-white"
-          value={` ${journeyOver.substring(
-            0,
-            3
-          )} ${journeyOver} International AIRPORT...`}
+          className="text-sm bg-white"
+          value={`${journeyOver} International AIRPORT...`}
         ></input>
       </div>
       <div className="border border-black w-1/5 h-36 flex flex-col  text-black p-2">
@@ -61,7 +55,7 @@ const Menuflight = () => {
       <div className="border border-black w-1/5 h-36 flex flex-col  text-black p-2">
         <div className="text-xl">RETURN</div>
 
-        <div className="text-lg">
+        <div className="text-sm">
           Tap to add a return date for bigger discounts
         </div>
       </div>
@@ -72,7 +66,7 @@ const Menuflight = () => {
           value={`${member}`}
           onChange={travel}
         />
-        <div className="text-lg text-gray-600">Economy/Premium Economy</div>
+        <div className="text-sm text-gray-600">Economy/Premium Economy</div>
       </div>
     </div>
   );
