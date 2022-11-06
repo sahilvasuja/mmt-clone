@@ -14,16 +14,7 @@ const bookingdetails = ({ array }) => {
 
     setArr(JSON.parse(decoded));
   }, []);
-  const passengerdetail = (e) => {
-    console.log(e.DepartureTime + "15");
-    router.push({
-      pathname: "/flightdetail/flight",
-      query: {
-        start: e.DepartureTime,
-        frm: e.from,
-      },
-    });
-  };
+  
   return (
     <div>
       {arr.map((e) => {
@@ -77,7 +68,7 @@ const bookingdetails = ({ array }) => {
                     </div>
 
                     <Link href={`/flightdetail/${e.id}`}>
-                      <a className="w-32 h-11 rounded flex border-solid border text-black bg-green-800 mx-2 justify-center place-items-center">
+                      <a className="w-32 h-11 rounded flex border-solid border text-black bg-green-800 mx-2 justify-center place-items-center" >
                         Book
                       </a>
                     </Link>

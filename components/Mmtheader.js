@@ -37,7 +37,7 @@ const Mmtheader = () => {
   const session = useSession();
   // const supabase = useSupabaseClient();
   const user = useUser();
-
+  
   useEffect(() => {
     if (session) {
       setLoggedIn(true);
@@ -187,7 +187,9 @@ const Mmtheader = () => {
             </div>
           </div>
 
-          <div className="border-light outline-none flex w-28 xl:w-48 items-center justify-around ">
+          <div className="border-light outline-none flex w-28 xl:w-48 items-center justify-around cursor-pointer " onClick={()=>{
+            router.push("/mytip")
+          }}>
             <h1 className="">💼</h1>
             <div className="text-md font-bold">
               My Trips <br></br>{" "}
