@@ -3,7 +3,7 @@ import { supabase } from "../utils/supabase";
 import { useState, useEffect } from "react";
 import Signin from "./signin";
 import { useSession } from "@supabase/auth-helpers-react";
-export default function Profile({ email, name }) {
+export default function Profile({ email, name,bool }) {
   const [phone, setPhone] = useState("8766111117");
   const [phoneplus, setphoneplus] = useState(false);
   const [gender, setGender] = useState("Male");
@@ -11,6 +11,7 @@ export default function Profile({ email, name }) {
   const [edit, setEdit] = useState(false);
   const [loading, setLoading] = useState(false);
   const session = useSession();
+ 
   useEffect(() => {
     getProfile();
   }, [session]);
@@ -76,7 +77,7 @@ export default function Profile({ email, name }) {
 
   return (
     <>
-      <div class="bg-gray-100 h-screen">
+      <div className={`bg-gray-100 h-screen  ${!bool? 'hidden' : 'visible'}`}>
         <div class="container mx-auto my-5 p-5">
           <div class="md:flex no-wrap md:-mx-2 ">
             <div class="w-full md:w-3/12 md:mx-2">

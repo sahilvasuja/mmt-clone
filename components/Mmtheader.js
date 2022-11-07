@@ -33,7 +33,7 @@ const Mmtheader = () => {
   const [name, setName] = useState();
   const [Email, setEmail] = useState();
   const router = useRouter();
-
+  const [bool,setbool]=useState(false)
   const session = useSession();
   // const supabase = useSupabaseClient();
   const user = useUser();
@@ -52,14 +52,18 @@ const Mmtheader = () => {
   };
 
   const UserProfile = async (e) => {
+    console.log(bool,"55")
+   
+    console.log(bool,"57")
     e.preventDefault();
     //router.push("/check");
     router.push({
       pathname: "/check",
-      query: { name: name, email: Email, LoggedIn: loggedIn },
+      query: { name: name, email: Email, LoggedIn: loggedIn,bool:false },
     });
   };
   const Create = async (e) => {
+   setbool(true)
     setshowsign(true);
     console.log("create");
     //  router.push("/createaccount");
